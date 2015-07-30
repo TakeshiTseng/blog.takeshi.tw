@@ -1652,7 +1652,7 @@ table .span12 {
   height: 14px;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url(url('/images/glyphicons-halflings.png?1438195461'));
+  background-image: url(url('/images/glyphicons-halflings.png?1438196229'));
   background-position: 14px 14px;
   background-repeat: no-repeat;
   *margin-right: .3em;
@@ -1665,7 +1665,7 @@ table .span12 {
 
 /* line 30, ../sass/_sprites.scss */
 .icon-white {
-  background-image: url(url('/images/glyphicons-halflings-white.png?1438195461'));
+  background-image: url(url('/images/glyphicons-halflings-white.png?1438196229'));
 }
 
 /* line 34, ../sass/_sprites.scss */
