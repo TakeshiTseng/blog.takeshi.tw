@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Takeshi's blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Le styles -->
+        <link href="/stylesheets/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+            .sidebar-nav {
+                padding: 9px 0;
+            }
+        </style>
+        <link href="/stylesheets/bootstrap-responsive.css" media="screen" rel="stylesheet" type="text/css" />
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    </head>
+
+    <body>
+        
+        <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/">Takeshi's Blog</a>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li><a href="/article">Article</a></li>
+                    <li><a href="/about.html">About</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+        
+        <!-- fork me on github -->
+        <a href="https://github.com/TakeshiTseng/blog.takeshi.tw"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1032;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+        
+
+        
+        <div class="container-fluid">
+            <div class="row-fluid">
+                
+                <div class="span12">
+                    <h2 id="section">緣起</h2>
+
+<p>由於最近在 Ryu 的 <a href="http://sourceforge.net/p/ryu/mailman/ryu-devel/">Mailling List</a> 中有人貼了一個<a href="https://www.kickstarter.com/projects/northboundnetworks/zodiac-fx-the-worlds-smallest-openflow-sdn-switch">小型版本的 SDN Switch</a>，所以我就看了一下他們公司的網頁</p>
+
+<p>沒想到卻發現了 <a href="http://northboundnetworks.com/epoch/">Epoch</a> 這一個給 Mac OSX 用的 SDN Simulator XD</p>
+
+<p>對於使用 Mac 的開發者算是一大福音，畢竟如果我們這些人要在 Mac 上面模擬 SDN 網路的話，我個人的作法是
+開一個 Linux 虛擬機器，然後在裡面開 <a href="http://mininet.org/">mininet</a> 然後再把它連到我的電腦上的 Controller 才行。</p>
+
+<p>這個過程算是蠻繁瑣的，如果有一個可以直接跑在 Mac 上面的 SDN 網路模擬器可以省下很多時間跟資源。</p>
+
+<h2 id="tuntap">安裝 TunTap</h2>
+
+<p>首先我們需要安裝的是 <a href="http://www.northboundnetworks.com/download_files/tuntap_20111101.tar.gz">tuntap</a> 這一套 Driver，Epoch 透過它來讓 Mac 與自己建立的 SDN 拓樸連接，
+可以注意的是，這一套 Driver 好像有點久了？就連 <a href="http://tuntaposx.sourceforge.net/download.xhtml">Sourceforge</a> 上面的連結好像都掛了 XD</p>
+
+<p>安裝完 tuntap 之後需要重新開機，OSX 10.10 以上的需要注意要把 tun 跟 tap 都重開</p>
+
+<blockquote>
+  <p>sudo /Library/StartupItems/tun/tun start</p>
+</blockquote>
+
+<blockquote>
+  <p>sudo /Library/StartupItems/tap/tap start</p>
+</blockquote>
+
+<p>重開完成之後，應該會看到 /dev 下面應該會有出現很多個 tun 跟 tap 開頭的東西</p>
+
+<blockquote>
+  <p>$ ls /dev/tun*<br />
+/dev/tun0  /dev/tun11 /dev/tun14 /dev/tun3  /dev/tun6  /dev/tun9<br />
+/dev/tun1  /dev/tun12 /dev/tun15 /dev/tun4  /dev/tun7<br />
+/dev/tun10 /dev/tun13 /dev/tun2  /dev/tun5  /dev/tun8  </p>
+</blockquote>
+
+<blockquote>
+  <p>$ ls /dev/tap*<br />
+/dev/tap0  /dev/tap11 /dev/tap14 /dev/tap3  /dev/tap6  /dev/tap9<br />
+/dev/tap1  /dev/tap12 /dev/tap15 /dev/tap4  /dev/tap7<br />
+/dev/tap10 /dev/tap13 /dev/tap2  /dev/tap5  /dev/tap8  </p>
+</blockquote>
+
+<p>在未來我們會用到 tap0</p>
+
+<h2 id="epoch">安裝 Epoch</h2>
+
+<p>安裝完 tuntap 之後，就是安裝 Epoch 了</p>
+
+<p>目前 Epoch 放在 HP SD App Store 裡面，仔細看一下，裡面大多數的 App 是針對 HP 自行設計的 Controller，
+也有針對 OpenDayLight 所設計的 App。</p>
+
+<p><img src="/images/sdn-app-store.png" width="600" /></p>
+
+<p><a href="https://hpn.hpwsportal.com/catalog.html#/Product/{%22productId%22%3A%221626%22}/Show">這邊</a> 是 Epoch for Mac OSX 的下載連結，它除了給 Mac OSX 以外，也有提供 Linux 的版本
+（但是應該不會筆 Mininet 好用就是了）。</p>
+
+<p>下載的時候需要註冊 HP SDN App Store 的帳號&#8230;&#8230;</p>
+
+<p>我也不確定擅自把它的程式放到這邊妥不妥當，所以就請大家自行下載吧 &gt;_&lt;</p>
+
+<p>下載完之後解壓縮即可，無需安裝</p>
+
+<p>在資料夾中會發現他的東西真的非常非常少（以 mininet 來做對比），真懷疑它能不能運作 XD</p>
+
+<blockquote>
+  <p>$ tree<br />
+.<br />
+├── ConfigGen<br />
+├── EULA.txt<br />
+├── Epoch<br />
+├── Examples<br />
+│   ├── Basic_Network.cfg<br />
+│   └── Simple_Network.cfg<br />
+├── Readme.txt<br />
+├── StartEpoch.sh<br />
+└── tuntap_20111101.tar.gz  </p>
+</blockquote>
+
+<h2 id="section-1">網路拓樸設定</h2>
+
+<p>在這一篇教學桌會用的得東西只有兩個：<code>StartEpoch.sh</code> 以及 <code>Simple_Network.cfg</code></p>
+
+<p>StartEpoch.sh 中只有執行一行指令</p>
+
+<blockquote>
+  <p>sudo ./Epoch -d -n Examples/Simple_Network.cfg</p>
+</blockquote>
+
+<p>其實他在 Readme 裡面提供的<a href="http://northboundnetworks.com/support/">網址</a>有說明</p>
+
+<p><code>-d</code> 表示 low debug mode</p>
+
+<p><code>-D</code> 則是 high debug mode，我們在這邊切換成這個，因為可以看到比較多東西</p>
+
+<p>然後 -n 後方加上一個 cfg 檔案表示要跑的網路拓樸</p>
+
+<p>再來是 Simple_Network.cfg 的結構，依據<a href="http://northboundnetworks.com/support/">說明</a>，可以知道以下資訊</p>
+
+<p><code>&lt;Serial&gt;</code> 標籤好像是之後不是 Beta 版所需要提供的，似乎未來會需要付錢？</p>
+
+<p><code>&lt;Switches&gt;</code> 是有哪些 Switch 在網路中，參數依序為：名稱、MAC Address、IP Address，Controller IP，Controller Port</p>
+
+<p><code>&lt;Hosts&gt;</code> 則是有哪些主機，參數依序為：名稱，MAC Address，IP Address，要連接的 Switch，該 Switch 的 Port</p>
+
+<p><code>&lt;Link&gt;</code> 是 Switch 與 Switch 的連結，參數依序為：Switch A 名稱，Switch A Port，Switch B 名稱，Switch B Port</p>
+
+<p><code>Gateway</code> 這邊表示要接上的 tuntap device，當他接上之後，你會發現<code>ifconfig</code>會多出一個有 IP 的 tapX 網路介面，此時
+就可以透過它與該網路連線。</p>
+
+<p>它的參數依序為：Gateway 名稱，Tuntap ID（用哪個Tap Device），IP Address，Netmask，要連上哪一台 Switch，Switch Port</p>
+
+<p>Simple_Network.cfg 裡面是一個單一 Switch 連接 8 個 Host 的案例。</p>
+
+<h2 id="epoch-1">執行 Epoch</h2>
+
+<p>在啟動 Eopch 之前，需要先啟動 Controller，不然 Epoch 會無法啟動</p>
+
+<p>啟動 Controller 之後，只需要輸入以下指令並輸入密碼（sudo 用）即可啟動 Epoch</p>
+
+<blockquote>
+  <p>StartEpoch.sh</p>
+</blockquote>
+
+<p>這邊補充一下，就目前看來，Epoch 只支援 OpenFlow 1.0 而已，目前也沒有辦法幫他設定版本。</p>
+
+<p>啟動之後應該會在網路介面下多出一個 tap0 才對</p>
+
+<blockquote>
+  <p>$ ifconfig<br />
+tap0: flags=8843&lt;UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST&gt; mtu 1500<br />
+    ether 56:94:88:d2:01:84<br />
+    inet 192.168.1.1 netmask 0xffffff00 broadcast 192.168.1.255<br />
+    open (pid 2561)  </p>
+</blockquote>
+
+<p>此時就可以用電腦自己 ping 看看裡面的 Host，原則上如果 Controller 有起來的話應該會看到 packet in 以及
+ping 會成功才對。</p>
+
+<blockquote>
+  <p>$ ping 192.168.1.2<br />
+PING 192.168.1.2 (192.168.1.2): 56 data bytes<br />
+64 bytes from 192.168.1.2: icmp_seq=0 ttl=64 time=6.152 ms<br />
+64 bytes from 192.168.1.2: icmp_seq=1 ttl=64 time=0.386 ms<br />
+64 bytes from 192.168.1.2: icmp_seq=2 ttl=64 time=0.336 ms<br />
+^C<br />
+&#8212; 192.168.1.2 ping statistics &#8212;<br />
+3 packets transmitted, 3 packets received, 0.0% packet loss<br />
+round-trip min/avg/max/stddev = 0.336/2.291/6.152/2.730 ms  </p>
+</blockquote>
+
+<h2 id="section-2">參考：</h2>
+<ul>
+  <li><a href="http://northboundnetworks.com/epoch/">Epoch</a></li>
+  <li><a href="http://northboundnetworks.com/support/">Epoch support</a></li>
+</ul>
+
+
+                </div>
+            </div><!--/row-->
+            
+            <div class="row-fluid">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES * * */
+                    var disqus_shortname = 'takeshiblog';
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
+            
+            <hr>
+
+<footer>
+    <p>&copy; Takeshi 2015</p>
+</footer>
+
+
+        </div><!--/.fluid-container-->
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/javascripts/jquery.js"></script>
+        <script src="/javascripts/bootstrap-transition.js"></script>
+        <script src="/javascripts/bootstrap-alert.js"></script>
+        <script src="/javascripts/bootstrap-modal.js"></script>
+        <script src="/javascripts/bootstrap-dropdown.js"></script>
+        <script src="/javascripts/bootstrap-scrollspy.js"></script>
+        <script src="/javascripts/bootstrap-tab.js"></script>
+        <script src="/javascripts/bootstrap-tooltip.js"></script>
+        <script src="/javascripts/bootstrap-popover.js"></script>
+        <script src="/javascripts/bootstrap-button.js"></script>
+        <script src="/javascripts/bootstrap-collapse.js"></script>
+        <script src="/javascripts/bootstrap-carousel.js"></script>
+        <script src="/javascripts/bootstrap-typeahead.js"></script>
+        <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+
+    </body>
+</html>
