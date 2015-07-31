@@ -1,0 +1,56 @@
+Ryu 官方線上文件中文翻譯
+====
+
+最近我在撰寫 [Ryu 線上文件中文版本][1]，歡迎大家協助提出錯誤修正或是[協助翻譯][2]
+
+
+緣起
+----
+
+原先只是為了打發時間所以就來進行翻譯的動作，剛好 ryu 官方文件並沒有提供任何中文版本（當然，Ryu Book 除外）。
+
+另一方面，也可以順便練練英文以及順便確認一下對於 ryu 那邊還不太熟悉 XD
+
+文件架構
+----
+
+>.  
+├── Makefile  
+└── source  
+    ├── （略）  
+    ├── api_ref.rst  
+    ├── app  
+    │   ├── ofctl.rst  
+    │   └── ofctl_rest.rst  
+    ├── app.rst  
+    ├── components.rst  
+    ├── conf.py  
+    ├── configuration.rst  
+    ├── developing.rst  
+    ├── getting_started.rst  
+    ├── gui.png  
+    ├── gui.rst  
+    ├── index.rst  
+    ├── library.rst  
+    ├── library_bgp_speaker.rst  
+    ├── library_bgp_speaker_ref.rst  
+    ├── library_of_config.rst  
+    ├── library_packet.rst  
+    ├── library_packet_ref.rst  
+    ├── man  
+    │   ├── ryu.rst  
+    │   └── ryu_manager.rst  
+    ├── ofproto_base.rst  
+    ├── ofproto_ref.rst  
+    ├── ofproto_v1_2_ref.rst  
+    ├── ofproto_v1_3_ref.rst  
+    ├── ofproto_v1_4_ref.rst  
+    ├── parameters.rst  
+    ├── （下略）  
+
+Ryu 的文件是使用 [ReStruct Text][3] 所撰寫而成，並使用 [Sphinx][4] 去進行建置的動作（rst -> html）。
+
+[1]: http://ryu-zhdoc.readthedocs.org/
+[2]: https://github.com/TakeshiTseng/ryu/tree/zhdoc/doc/source
+[3]: https://en.wikipedia.org/wiki/ReStructuredText
+[4]: http://sphinx-doc.org/
