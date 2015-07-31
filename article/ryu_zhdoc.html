@@ -62,17 +62,93 @@
             <div class="row-fluid">
                 
                 <div class="span12">
-                    <h1 id="section">文章列表</h1>
-<p>All articles will be here!</p>
-<hr>
-<p><em>2015.07.30</em> <a href="/article/new_blog.html">New Blog!</a></p>
-<p><em>2015.07.30</em> <a href="/article/about_this_blog.html">About this blog</a></p>
-<p><em>2015.07.31</em> <a href="/article/epoch.html">Epoch - SDN simulator for Mac OSX</a></p>
-<p><em>2015.07.31</em> <a href="/article/ryu_zhdoc.html">Ryu 官方線上文件中文翻譯</a></p>
+                    <h1 id="ryu-">Ryu 官方線上文件中文翻譯</h1>
+
+<p>最近我在撰寫 <a href="http://ryu-zhdoc.readthedocs.org/">Ryu 線上文件中文版本</a>，歡迎大家協助提出錯誤修正或是<a href="https://github.com/TakeshiTseng/ryu/tree/zhdoc/doc/source">協助翻譯</a></p>
+
+<h2 id="section">緣起</h2>
+
+<p>原先只是為了打發時間所以就來進行翻譯的動作，剛好 ryu 官方文件並沒有提供任何中文版本（當然，Ryu Book 除外）。</p>
+
+<p>另一方面，也可以順便練練英文以及順便確認一下對於 ryu 那邊還不太熟悉 XD</p>
+
+<h2 id="section-1">文件架構</h2>
+
+<blockquote>
+  <p>.<br />
+├── Makefile<br />
+└── source<br />
+……..├── （略）<br />
+……..├── api_ref.rst<br />
+……..├── app<br />
+……..│   ├── ofctl.rst<br />
+……..│   └── ofctl_rest.rst<br />
+……..├── app.rst<br />
+……..├── components.rst<br />
+……..├── conf.py<br />
+……..├── configuration.rst<br />
+……..├── developing.rst<br />
+……..├── getting_started.rst<br />
+……..├── gui.png<br />
+……..├── gui.rst<br />
+……..├── index.rst<br />
+……..├── （下略）  </p>
+</blockquote>
+
+<p>Ryu 的文件是使用 <a href="https://en.wikipedia.org/wiki/ReStructuredText">ReStruct Text</a> 所撰寫而成，並使用 <a href="http://sphinx-doc.org/">Sphinx</a> 去進行建置的動作（rst -&gt; html）。</p>
+
+<p>要 Build 出 html 檔案很簡單，只需要輸入<code>make html</code>即可，它就會自動從 Mackfile 裡面設定的指令去產生文件，
+當然，也可產生其他像是 txt，LaTex 之類的文件。</p>
+
+<h2 id="section-2">如何翻譯？</h2>
+
+<p>原則上翻譯沒有很困難，主要是要把所有 rst 你看的到的英文（目錄結構與設定除外）轉換成中文，目前（2015/07/31）
+我已經翻譯完 70% 左右，卡在 ryu API 那邊正在慢慢翻譯。</p>
+
+<p>此外，部分的 API 文件是使用 Sphinx 中的 auto class 與 auto module 去產生的，除非去翻譯 python 程式碼裡面
+原始 pyDoc 的內容，否則沒有辦法翻譯它。</p>
+
+<p>翻譯主要分為兩個階段：</p>
+
+<ol>
+  <li>全部 rst 可以翻到的地方</li>
+  <li>Python Doc 內容翻譯</li>
+</ol>
+
+<p>以上兩個部分都是在我 fork 出來的 repo 的另一個獨立的 branch 中進行，以確保不會影響到原始內容。</p>
+
+<p>會這麼做主要的原因是因為 ryu 官方使用的是 <readthedocs.org> 這一個文件平台，他可以直接輸入一個
+repo 並且將裡面的 doc 資料夾下的內容編譯成 html （依據 Sphinx 規則），所以如果要製作一個中文版的
+說明文件，只需要將自己 fork 出來的文件翻譯，並且在該網站創立一個新的專案即可。</readthedocs.org></p>
+
+<p>而翻譯的版本如果要跟原版連結在一起，需要到他的設定中將翻譯的 Project 加入，這樣一來在原始版本以及翻譯版本中的 
+Language 底下就會出現不同的語言連結可以使用。</p>
+
+<p><img src="/images/readthedoc-translate-setting.png" width="600" /></p>
+
+<h2 id="section-3">翻譯成果</h2>
+
+<p>翻譯的結果可以到<a href="http://ryu-zhdoc.readthedocs.org/">這邊</a>觀看，但是目前是沒有完就是了……</p>
 
 
                 </div>
             </div><!--/row-->
+            
+            <div class="row-fluid">
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    /* * * CONFIGURATION VARIABLES * * */
+                    var disqus_shortname = 'takeshiblog';
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            </div>
             
             <hr>
 
