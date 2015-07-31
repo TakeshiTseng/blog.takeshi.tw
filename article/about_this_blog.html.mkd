@@ -1,4 +1,7 @@
-關於這個部落格，上衣篇有提到它是架設在 github 上面的
+About this blog
+====
+
+關於這個部落格，上一篇有提到它是架設在 github 上面的
 
 詳細內容可以點擊右上角的 [Fork me on github](https://github.com/TakeshiTseng/blog.takeshi.tw)
 
