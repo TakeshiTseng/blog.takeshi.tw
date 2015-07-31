@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px"
+	 height="600px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+<g id="圖層_1">
+</g>
+<g id="圖層_2">
+	<rect x="54.256" y="28.192" fill="#7FA9DA" width="491.489" height="343.617"/>
+	<text transform="matrix(1 0 0 1 61.043 54.2129)" font-family="'Helvetica-Light'" font-size="24">Ryu-manager</text>
+</g>
+<g id="圖層_3">
+	<rect x="71.681" y="114.851" fill="#AAD384" width="106.777" height="92.553"/>
+	<rect x="417.426" y="114.851" fill="#AAD384" width="101.063" height="92.553"/>
+	<rect x="221.915" y="114.851" fill="#CDAC84" width="151.687" height="92.553"/>
+	<text transform="matrix(1 0 0 1 78.064 135.1289)" font-family="'Helvetica-Light'" font-size="24">Ryu App</text>
+	<text transform="matrix(1 0 0 1 421.543 135.1279)" font-family="'Helvetica-Light'" font-size="24">Ryu App</text>
+	<text transform="matrix(1 0 0 1 226.3984 135.1289)"><tspan x="0" y="0" font-family="'Helvetica-Light'" font-size="24">OFPHandler</tspan><tspan x="0" y="28.8" font-family="'Helvetica-Light'" font-size="24">(Ryu App)</tspan></text>
+</g>
+<g id="圖層_4">
+	<rect x="54.256" y="460.596" fill="#B992C2" width="491.489" height="65.957"/>
+	<text transform="matrix(1 0 0 1 54.2559 481.873)" font-family="'Helvetica-Light'" font-size="24">Hardware Datapath(SDN Switch)</text>
+</g>
+<g id="圖層_5">
+	<rect x="95.085" y="278.277" fill="#FFFFFF" width="102.128" height="76.596"/>
+	<rect x="221.915" y="278.277" fill="#FFFFFF" width="101.894" height="76.596"/>
+	<rect x="421.543" y="278.276" fill="#FFFFFF" width="101.202" height="76.595"/>
+	<text transform="matrix(1 0 0 1 335.5107 319.1064)" fill="#FFFFFF" font-family="'Helvetica-Light'" font-size="48">......</text>
+	<text transform="matrix(1 0 0 1 95.085 300)" font-family="'Helvetica-Light'" font-size="24">Datapath</text>
+	<text transform="matrix(1 0 0 1 421.543 299.9995)" font-family="'Helvetica-Light'" font-size="24">Datapath</text>
+	<text transform="matrix(1 0 0 1 221.9146 300)" font-family="'Helvetica-Light'" font-size="24">Datapath</text>
+</g>
+<g id="圖層_6">
+	<g>
+		<line fill="#040000" x1="146.149" y1="354.871" x2="146.149" y2="460.596"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="146.149" y1="363.924" x2="146.149" y2="451.543"/>
+			<g>
+				<path fill="#040000" d="M146.149,354.871c-1.581,4.26-4.277,9.545-7.134,12.821l7.134-2.581l7.132,2.581
+					C150.425,364.416,147.728,359.131,146.149,354.871z"/>
+			</g>
+			<g>
+				<path fill="#040000" d="M146.149,460.596c-1.581-4.26-4.277-9.545-7.134-12.821l7.134,2.581l7.132-2.581
+					C150.425,451.051,147.728,456.336,146.149,460.596z"/>
+			</g>
+		</g>
+	</g>
+	<text transform="matrix(1 0 0 1 150.4043 411.6592)" font-family="'Helvetica-Light'" font-size="24">TCP</text>
+	<g>
+		<line fill="#040000" x1="271.021" y1="354.871" x2="271.021" y2="460.596"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="271.021" y1="363.924" x2="271.021" y2="451.543"/>
+			<g>
+				<path fill="#040000" d="M271.021,354.871c-1.581,4.26-4.277,9.545-7.134,12.82l7.134-2.58l7.132,2.58
+					C275.297,364.416,272.6,359.131,271.021,354.871z"/>
+			</g>
+			<g>
+				<path fill="#040000" d="M271.021,460.596c-1.581-4.26-4.277-9.545-7.134-12.822l7.134,2.582l7.132-2.582
+					C275.297,451.051,272.6,456.336,271.021,460.596z"/>
+			</g>
+		</g>
+	</g>
+	<text transform="matrix(1 0 0 1 275.2764 411.6582)" font-family="'Helvetica-Light'" font-size="24">TCP</text>
+	<g>
+		<line fill="#040000" x1="470.018" y1="358.797" x2="470.018" y2="464.521"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="470.018" y1="367.85" x2="470.018" y2="455.469"/>
+			<g>
+				<path fill="#040000" d="M470.018,358.797c-1.581,4.26-4.277,9.545-7.135,12.821l7.135-2.581l7.132,2.581
+					C474.293,368.342,471.596,363.057,470.018,358.797z"/>
+			</g>
+			<g>
+				<path fill="#040000" d="M470.018,464.521c-1.581-4.26-4.277-9.545-7.135-12.821l7.135,2.581l7.132-2.581
+					C474.293,454.977,471.596,460.262,470.018,464.521z"/>
+			</g>
+		</g>
+	</g>
+	<text transform="matrix(1 0 0 1 474.2725 415.585)" font-family="'Helvetica-Light'" font-size="24">TCP</text>
+</g>
+<g id="圖層_7">
+	<g>
+		<line fill="#040000" x1="87.873" y1="204.511" x2="125.069" y2="276.685"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="92.02" y1="212.558" x2="125.069" y2="276.685"/>
+			<g>
+				<path fill="#040000" d="M87.873,204.511c0.546,4.511,0.57,10.444-0.468,14.665l5.159-5.562l7.522-0.974
+					C96.046,211.036,91.228,207.574,87.873,204.511z"/>
+			</g>
+		</g>
+	</g>
+	<text transform="matrix(1 0 0 1 31.6592 254.3301)" font-family="'Helvetica-Light'" font-size="24">Event</text>
+	<g>
+		<line fill="#040000" x1="178.458" y1="200.863" x2="443.506" y2="277.057"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="187.158" y1="203.364" x2="443.506" y2="277.057"/>
+			<g>
+				<path fill="#040000" d="M178.458,200.863c3.657,2.696,7.992,6.748,10.351,10.398l-0.509-7.569l4.45-6.142
+					C188.813,199.391,182.988,200.522,178.458,200.863z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="#040000" x1="363.744" y1="210.149" x2="479.342" y2="267.77"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="371.846" y1="214.188" x2="479.342" y2="267.77"/>
+			<g>
+				<path fill="#040000" d="M363.744,210.149c3.107,3.315,6.635,8.086,8.292,12.104l0.873-7.536l5.491-5.232
+					C374.194,210.581,368.261,210.636,363.744,210.149z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="#040000" x1="429.027" y1="213.313" x2="171.164" y2="271.528"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="420.197" y1="215.307" x2="171.164" y2="271.528"/>
+			<g>
+				<path fill="#040000" d="M429.027,213.313c-4.503-0.604-10.253-2.07-14.077-4.135l4.088,6.391l-0.946,7.525
+					C420.658,219.586,425.22,215.792,429.027,213.313z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="#040000" x1="453.229" y1="211.231" x2="302.859" y2="266.688"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="444.735" y1="214.363" x2="302.859" y2="266.688"/>
+			<g>
+				<path fill="#040000" d="M453.229,211.231c-4.544-0.009-10.436-0.71-14.497-2.257l4.889,5.8l0.047,7.584
+					C445.753,218.545,449.778,214.187,453.229,211.231z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="#040000" x1="125.069" y1="211.165" x2="253.216" y2="273.676"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="133.206" y1="215.134" x2="253.216" y2="273.676"/>
+			<g>
+				<path fill="#040000" d="M125.069,211.165c3.136,3.288,6.703,8.029,8.396,12.033l0.809-7.543l5.446-5.279
+					C135.522,211.507,129.59,211.613,125.069,211.165z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="#040000" x1="254.771" y1="208.879" x2="139.654" y2="275.962"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="246.95" y1="213.438" x2="139.654" y2="275.962"/>
+			<g>
+				<path fill="#040000" d="M254.771,208.879c-4.476,0.779-10.4,1.11-14.669,0.292l5.821,4.865l1.362,7.461
+					C248.678,217.379,251.886,212.389,254.771,208.879z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="#040000" x1="501.468" y1="204.511" x2="501.468" y2="280.331"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="501.468" y1="213.563" x2="501.468" y2="280.331"/>
+			<g>
+				<path fill="#040000" d="M501.468,204.511c-1.581,4.26-4.277,9.545-7.134,12.821l7.134-2.581l7.132,2.581
+					C505.744,214.056,503.047,208.771,501.468,204.511z"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<line fill="#040000" x1="300.096" y1="206.6" x2="275.276" y2="278.242"/>
+		<g>
+			
+				<line fill="none" stroke="#040000" stroke-width="3" stroke-miterlimit="10" x1="297.132" y1="215.154" x2="275.276" y2="278.242"/>
+			<g>
+				<path fill="#040000" d="M300.096,206.6c-2.888,3.508-7.166,7.619-10.938,9.779l7.585-0.103l5.894,4.773
+					C301.012,217.019,300.193,211.142,300.096,206.6z"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
