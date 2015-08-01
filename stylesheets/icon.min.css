@@ -1,0 +1,3711 @@
+/*!
+ * # Semantic UI 2.0.7 - Icon
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Copyright 2015 Contributors
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+@font-face {
+  font-family: Icons;
+  src: url(/fonts/icons.eot);
+  src: url(/fonts/icons.eot?#iefix) format("embedded-opentype"), url(/fonts/icons.woff2) format("woff2"), url(/fonts/icons.woff) format("woff"), url(/fonts/icons.ttf) format("truetype"), url(/fonts/icons.svg#icons) format("svg");
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
+/* line 10, ../sass/icon.min.scss */
+i.icon {
+  display: inline-block;
+  opacity: 1;
+  margin: 0 .25rem 0 0;
+  width: 1.18em;
+  height: 1em;
+  font-family: Icons;
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: inherit;
+  text-align: center;
+  speak: none;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon:before {
+  background: 0 0 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.loading {
+  height: 1em;
+  line-height: 1;
+  -webkit-animation: icon-loading 2s linear infinite;
+  animation: icon-loading 2s linear infinite;
+}
+
+@-webkit-keyframes icon-loading {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes icon-loading {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/* line 10, ../sass/icon.min.scss */
+i.emphasized.icon, i.icon.active, i.icon.hover {
+  opacity: 1;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.disabled.icon {
+  opacity: 0.45 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.link.icon {
+  cursor: pointer;
+  opacity: .8;
+  -webkit-transition: opacity .1s ease;
+  transition: opacity .1s ease;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.link.icon:hover {
+  opacity: 1 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.circular.icon {
+  border-radius: 500em !important;
+  line-height: 1 !important;
+  padding: 0.5em !important;
+  box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+  width: 2em !important;
+  height: 2em !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.circular.inverted.icon {
+  border: none;
+  box-shadow: none;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.flipped.icon, i.horizontally.flipped.icon {
+  -webkit-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.vertically.flipped.icon {
+  -webkit-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.clockwise.rotated.icon, i.right.rotated.icon, i.rotated.icon {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.counterclockwise.rotated.icon, i.left.rotated.icon {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.bordered.icon {
+  line-height: 1;
+  vertical-align: baseline;
+  width: 2em;
+  height: 2em;
+  padding: 0.5em 0.41em !important;
+  box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.bordered.inverted.icon {
+  border: none;
+  box-shadow: none;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.icon, i.inverted.circular.icon {
+  background-color: #1b1c1d !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.icon {
+  color: #fff;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.red.icon {
+  color: #db2828 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.red.icon {
+  color: #ff695e !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.red.icon, i.inverted.circular.red.icon {
+  background-color: #db2828 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.orange.icon {
+  color: #f2711c !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.orange.icon {
+  color: #ff851b !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.orange.icon, i.inverted.circular.orange.icon {
+  background-color: #f2711c !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.yellow.icon {
+  color: #fbbd08 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.yellow.icon {
+  color: #ffe21f !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.yellow.icon, i.inverted.circular.yellow.icon {
+  background-color: #fbbd08 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.olive.icon {
+  color: #b5cc18 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.olive.icon {
+  color: #d9e778 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.olive.icon, i.inverted.circular.olive.icon {
+  background-color: #b5cc18 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.green.icon {
+  color: #21ba45 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.green.icon {
+  color: #2ecc40 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.green.icon, i.inverted.circular.green.icon {
+  background-color: #21ba45 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.teal.icon {
+  color: #00b5ad !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.teal.icon {
+  color: #6dffff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.teal.icon, i.inverted.circular.teal.icon {
+  background-color: #00b5ad !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.blue.icon {
+  color: #2185d0 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.blue.icon {
+  color: #54c8ff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.blue.icon, i.inverted.circular.blue.icon {
+  background-color: #2185d0 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.violet.icon {
+  color: #6435c9 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.violet.icon {
+  color: #a291fb !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.violet.icon, i.inverted.circular.violet.icon {
+  background-color: #6435c9 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.purple.icon {
+  color: #a333c8 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.purple.icon {
+  color: #dc73ff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.purple.icon, i.inverted.circular.purple.icon {
+  background-color: #a333c8 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.pink.icon {
+  color: #e03997 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.pink.icon {
+  color: #ff8edf !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.pink.icon, i.inverted.circular.pink.icon {
+  background-color: #e03997 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.brown.icon {
+  color: #a5673f !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.brown.icon {
+  color: #d67c1c !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.brown.icon, i.inverted.circular.brown.icon {
+  background-color: #a5673f !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.grey.icon {
+  color: #767676 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.grey.icon {
+  color: #dcddde !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordered.grey.icon, i.inverted.circular.grey.icon {
+  background-color: #767676 !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.black.icon {
+  color: #1b1c1d !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.black.icon {
+  color: #545454 !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.inverted.bordeblack.black.icon, i.inverted.circular.black.icon {
+  background-color: #1b1c1d !important;
+  color: #fff !important;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.small.icon, i.small.icons {
+  line-height: 1;
+  font-size: .92857143em;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon, i.icons {
+  font-size: 1em;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.large.icon, i.large.icons {
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 1.5em;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.big.icon, i.big.icons {
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 2em;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.huge.icon, i.huge.icons {
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 4em;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.massive.icon, i.massive.icons {
+  line-height: 1;
+  vertical-align: middle;
+  font-size: 8em;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icons {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icons .icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  margin: 0;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icons .icon:first-child {
+  position: static;
+  width: auto;
+  height: auto;
+  vertical-align: top;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  margin-right: .25rem;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icons .corner.icon {
+  top: auto;
+  left: auto;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+  font-size: .45em;
+  text-shadow: -1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icons .inverted.corner.icon {
+  text-shadow: -1px -1px 0 #1b1c1d,1px -1px 0 #1b1c1d,-1px 1px 0 #1b1c1d,1px 1px 0 #1b1c1d;
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.search:before {
+  content: "\f002";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mail.outline:before {
+  content: "\f003";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.external:before {
+  content: "\f08e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.signal:before {
+  content: "\f012";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.setting:before {
+  content: "\f013";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.home:before {
+  content: "\f015";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.inbox:before {
+  content: "\f01c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.browser:before {
+  content: "\f022";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tag:before {
+  content: "\f02b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tags:before {
+  content: "\f02c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.calendar:before {
+  content: "\f073";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.comment:before {
+  content: "\f075";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.comments:before {
+  content: "\f086";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.shop:before {
+  content: "\f07a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.settings:before {
+  content: "\f085";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.trophy:before {
+  content: "\f091";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.payment:before {
+  content: "\f09d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.feed:before {
+  content: "\f09e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.alarm.outline:before {
+  content: "\f0a2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tasks:before {
+  content: "\f0ae";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cloud:before {
+  content: "\f0c2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lab:before {
+  content: "\f0c3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mail:before {
+  content: "\f0e0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.idea:before {
+  content: "\f0eb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dashboard:before {
+  content: "\f0e4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sitemap:before {
+  content: "\f0e8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.alarm:before {
+  content: "\f0f3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.terminal:before {
+  content: "\f120";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.code:before {
+  content: "\f121";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.protect:before {
+  content: "\f132";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.calendar.outline:before {
+  content: "\f133";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ticket:before {
+  content: "\f145";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.external.square:before {
+  content: "\f14c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.map:before {
+  content: "\f14e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bug:before {
+  content: "\f188";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mail.square:before {
+  content: "\f199";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.history:before {
+  content: "\f1da";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.options:before {
+  content: "\f1de";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.comment.outline:before {
+  content: "\f0e5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.comments.outline:before {
+  content: "\f0e6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.text.telephone:before {
+  content: "\f1e4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.find:before {
+  content: "\f1e5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.wifi:before {
+  content: "\f1eb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.alarm.slash:before {
+  content: "\f1f6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.alarm.slash.outline:before {
+  content: "\f1f7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.copyright:before {
+  content: "\f1f9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.at:before {
+  content: "\f1fa";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.eyedropper:before {
+  content: "\f1fb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.paint.brush:before {
+  content: "\f1fc";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.heartbeat:before {
+  content: "\f21e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.download:before {
+  content: "\f019";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.repeat:before {
+  content: "\f01e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.refresh:before {
+  content: "\f021";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lock:before {
+  content: "\f023";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bookmark:before {
+  content: "\f02e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.print:before {
+  content: "\f02f";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.write:before {
+  content: "\f040";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.theme:before {
+  content: "\f043";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.adjust:before {
+  content: "\f042";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.edit:before {
+  content: "\f044";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.external.share:before {
+  content: "\f045";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ban:before {
+  content: "\f05e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mail.forward:before, i.icon.share:before {
+  content: "\f064";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.expand:before {
+  content: "\f065";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.compress:before {
+  content: "\f066";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.unhide:before {
+  content: "\f06e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hide:before {
+  content: "\f070";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.random:before {
+  content: "\f074";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.retweet:before {
+  content: "\f079";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sign.out:before {
+  content: "\f08b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pin:before {
+  content: "\f08d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sign.in:before {
+  content: "\f090";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.upload:before {
+  content: "\f093";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.call:before {
+  content: "\f095";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.call.square:before {
+  content: "\f098";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.remove.bookmark:before {
+  content: "\f097";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.unlock:before {
+  content: "\f09c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.configure:before {
+  content: "\f0ad";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.filter:before {
+  content: "\f0b0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.wizard:before {
+  content: "\f0d0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.undo:before {
+  content: "\f0e2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.exchange:before {
+  content: "\f0ec";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cloud.download:before {
+  content: "\f0ed";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cloud.upload:before {
+  content: "\f0ee";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.reply:before {
+  content: "\f112";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.reply.all:before {
+  content: "\f122";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.erase:before {
+  content: "\f12d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.unlock.alternate:before {
+  content: "\f13e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.archive:before {
+  content: "\f187";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.translate:before {
+  content: "\f1ab";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.recycle:before {
+  content: "\f1b8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.send:before {
+  content: "\f1d8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.send.outline:before {
+  content: "\f1d9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.share.alternate:before {
+  content: "\f1e0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.share.alternate.square:before {
+  content: "\f1e1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.wait:before {
+  content: "\f017";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.write.square:before {
+  content: "\f14b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.share.square:before {
+  content: "\f14d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.add.to.cart:before {
+  content: "\f217";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.in.cart:before {
+  content: "\f218";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.add.user:before {
+  content: "\f234";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.remove.user:before {
+  content: "\f235";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.help.circle:before {
+  content: "\f059";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.info.circle:before {
+  content: "\f05a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.warning:before {
+  content: "\f12a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.warning.circle:before {
+  content: "\f06a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.warning.sign:before {
+  content: "\f071";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.help:before {
+  content: "\f128";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.info:before {
+  content: "\f129";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.announcement:before {
+  content: "\f0a1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.birthday:before {
+  content: "\f1fd";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.users:before {
+  content: "\f0c0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.doctor:before {
+  content: "\f0f0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.child:before {
+  content: "\f1ae";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.user:before {
+  content: "\f007";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.handicap:before {
+  content: "\f193";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.student:before {
+  content: "\f19d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.spy:before {
+  content: "\f21b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.female:before {
+  content: "\f182";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.male:before {
+  content: "\f183";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.woman:before {
+  content: "\f221";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.man:before {
+  content: "\f222";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.non.binary.transgender:before {
+  content: "\f223";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.intergender:before {
+  content: "\f224";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.transgender:before {
+  content: "\f225";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lesbian:before {
+  content: "\f226";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.gay:before {
+  content: "\f227";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.heterosexual:before {
+  content: "\f228";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.other.gender:before {
+  content: "\f229";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.other.gender.vertical:before {
+  content: "\f22a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.other.gender.horizontal:before {
+  content: "\f22b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.grid.layout:before {
+  content: "\f00a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.list.layout:before {
+  content: "\f00b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.block.layout:before {
+  content: "\f009";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.zoom:before {
+  content: "\f00e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.zoom.out:before {
+  content: "\f010";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.resize.vertical:before {
+  content: "\f07d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.resize.horizontal:before {
+  content: "\f07e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.maximize:before {
+  content: "\f0b2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.crop:before {
+  content: "\f125";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cocktail:before {
+  content: "\f000";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.road:before {
+  content: "\f018";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.flag:before {
+  content: "\f024";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.book:before {
+  content: "\f02d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.gift:before {
+  content: "\f06b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.leaf:before {
+  content: "\f06c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.fire:before {
+  content: "\f06d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.plane:before {
+  content: "\f072";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.magnet:before {
+  content: "\f076";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.legal:before {
+  content: "\f0e3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lemon:before {
+  content: "\f094";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.world:before {
+  content: "\f0ac";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.travel:before {
+  content: "\f0b1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.shipping:before {
+  content: "\f0d1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.money:before {
+  content: "\f0d6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.rain:before {
+  content: "\f0e9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.treatment:before {
+  content: "\f0f1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bar:before {
+  content: "\f0fc";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.flag.outline:before {
+  content: "\f11d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.flag.checkered:before {
+  content: "\f11e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.puzzle:before {
+  content: "\f12e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.fire.extinguisher:before {
+  content: "\f134";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.rocket:before {
+  content: "\f135";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.anchor:before {
+  content: "\f13d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bullseye:before {
+  content: "\f140";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sun:before {
+  content: "\f185";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.moon:before {
+  content: "\f186";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.fax:before {
+  content: "\f1ac";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.life.ring:before {
+  content: "\f1cd";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bomb:before {
+  content: "\f1e2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.soccer:before {
+  content: "\f1e3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.calculator:before {
+  content: "\f1ec";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.diamond:before {
+  content: "\f219";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.crosshairs:before {
+  content: "\f05b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.asterisk:before {
+  content: "\f069";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.certificate:before {
+  content: "\f0a3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.circle:before {
+  content: "\f111";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.quote.left:before {
+  content: "\f10d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.quote.right:before {
+  content: "\f10e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ellipsis.horizontal:before {
+  content: "\f141";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ellipsis.vertical:before {
+  content: "\f142";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cube:before {
+  content: "\f1b2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cubes:before {
+  content: "\f1b3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.circle.notched:before {
+  content: "\f1ce";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.circle.thin:before {
+  content: "\f1db";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.square.outline:before {
+  content: "\f096";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.square:before {
+  content: "\f0c8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.checkmark:before {
+  content: "\f00c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.checkmark.box:before {
+  content: "\f046";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.move:before {
+  content: "\f047";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.add.circle:before {
+  content: "\f055";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.remove.circle:before {
+  content: "\f057";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.check.circle:before {
+  content: "\f058";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.remove.circle.outline:before {
+  content: "\f05c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.check.circle.outline:before {
+  content: "\f05d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.plus:before {
+  content: "\f067";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.minus:before {
+  content: "\f068";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.add.square:before {
+  content: "\f0fe";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.radio:before {
+  content: "\f10c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.selected.radio:before {
+  content: "\f192";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.minus.square:before {
+  content: "\f146";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.minus.square.outline:before {
+  content: "\f147";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.check.square:before {
+  content: "\f14a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.plus.square.outline:before {
+  content: "\f196";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.toggle.off:before {
+  content: "\f204";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.toggle.on:before {
+  content: "\f205";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.film:before {
+  content: "\f008";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sound:before {
+  content: "\f025";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.photo:before {
+  content: "\f030";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bar.chart:before {
+  content: "\f080";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.camera.retro:before {
+  content: "\f083";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.newspaper:before {
+  content: "\f1ea";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.area.chart:before {
+  content: "\f1fe";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pie.chart:before {
+  content: "\f200";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.line.chart:before {
+  content: "\f201";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.circle.outline.down:before {
+  content: "\f01a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.circle.outline.up:before {
+  content: "\f01b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chevron.left:before {
+  content: "\f053";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chevron.right:before {
+  content: "\f054";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.left:before {
+  content: "\f060";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.right:before {
+  content: "\f061";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.up:before {
+  content: "\f062";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.down:before {
+  content: "\f063";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chevron.up:before {
+  content: "\f077";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chevron.down:before {
+  content: "\f078";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pointing.right:before {
+  content: "\f0a4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pointing.left:before {
+  content: "\f0a5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pointing.up:before {
+  content: "\f0a6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pointing.down:before {
+  content: "\f0a7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.circle.left:before {
+  content: "\f0a8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.circle.right:before {
+  content: "\f0a9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.circle.up:before {
+  content: "\f0aa";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.circle.down:before {
+  content: "\f0ab";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.caret.down:before {
+  content: "\f0d7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.caret.up:before {
+  content: "\f0d8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.caret.left:before {
+  content: "\f0d9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.caret.right:before {
+  content: "\f0da";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angle.double.left:before {
+  content: "\f100";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angle.double.right:before {
+  content: "\f101";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angle.double.up:before {
+  content: "\f102";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angle.double.down:before {
+  content: "\f103";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angle.left:before {
+  content: "\f104";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angle.right:before {
+  content: "\f105";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angle.up:before {
+  content: "\f106";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angle.down:before {
+  content: "\f107";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chevron.circle.left:before {
+  content: "\f137";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chevron.circle.right:before {
+  content: "\f138";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chevron.circle.up:before {
+  content: "\f139";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chevron.circle.down:before {
+  content: "\f13a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.toggle.down:before {
+  content: "\f150";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.toggle.up:before {
+  content: "\f151";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.toggle.right:before {
+  content: "\f152";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.long.arrow.down:before {
+  content: "\f175";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.long.arrow.up:before {
+  content: "\f176";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.long.arrow.left:before {
+  content: "\f177";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.long.arrow.right:before {
+  content: "\f178";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.circle.outline.right:before {
+  content: "\f18e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.circle.outline.left:before {
+  content: "\f190";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.toggle.left:before {
+  content: "\f191";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.power:before {
+  content: "\f011";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.trash:before {
+  content: "\f1f8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.trash.outline:before {
+  content: "\f014";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.disk.outline:before {
+  content: "\f0a0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.desktop:before {
+  content: "\f108";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.laptop:before {
+  content: "\f109";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tablet:before {
+  content: "\f10a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mobile:before {
+  content: "\f10b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.game:before {
+  content: "\f11b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.keyboard:before {
+  content: "\f11c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.plug:before {
+  content: "\f1e6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.folder:before {
+  content: "\f07b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.folder.open:before {
+  content: "\f07c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.level.up:before {
+  content: "\f148";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.level.down:before {
+  content: "\f149";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file:before {
+  content: "\f15b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.outline:before {
+  content: "\f016";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.text:before {
+  content: "\f15c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.text.outline:before {
+  content: "\f0f6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.folder.outline:before {
+  content: "\f114";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.folder.open.outline:before {
+  content: "\f115";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.pdf.outline:before {
+  content: "\f1c1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.word.outline:before {
+  content: "\f1c2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.excel.outline:before {
+  content: "\f1c3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.powerpoint.outline:before {
+  content: "\f1c4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.image.outline:before {
+  content: "\f1c5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.archive.outline:before {
+  content: "\f1c6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.audio.outline:before {
+  content: "\f1c7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.video.outline:before {
+  content: "\f1c8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.file.code.outline:before {
+  content: "\f1c9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.barcode:before {
+  content: "\f02a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.qrcode:before {
+  content: "\f029";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.fork:before {
+  content: "\f126";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.html5:before {
+  content: "\f13b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.css3:before {
+  content: "\f13c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.rss:before {
+  content: "\f09e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.rss.square:before {
+  content: "\f143";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.openid:before {
+  content: "\f19b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.database:before {
+  content: "\f1c0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.server:before {
+  content: "\f233";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.heart:before {
+  content: "\f004";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.star:before {
+  content: "\f005";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.empty.star:before {
+  content: "\f006";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.thumbs.outline.up:before {
+  content: "\f087";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.thumbs.outline.down:before {
+  content: "\f088";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.star.half:before {
+  content: "\f089";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.empty.heart:before {
+  content: "\f08a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.smile:before {
+  content: "\f118";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.frown:before {
+  content: "\f119";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.meh:before {
+  content: "\f11a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.star.half.empty:before {
+  content: "\f123";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.thumbs.up:before {
+  content: "\f164";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.thumbs.down:before {
+  content: "\f165";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.music:before {
+  content: "\f001";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.video.play.outline:before {
+  content: "\f01d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.volume.down:before {
+  content: "\f027";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.volume.up:before {
+  content: "\f028";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.record:before {
+  content: "\f03d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.step.backward:before {
+  content: "\f048";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.fast.backward:before {
+  content: "\f049";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.backward:before {
+  content: "\f04a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.play:before {
+  content: "\f04b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pause:before {
+  content: "\f04c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.stop:before {
+  content: "\f04d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.forward:before {
+  content: "\f04e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.fast.forward:before {
+  content: "\f050";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.step.forward:before {
+  content: "\f051";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.eject:before {
+  content: "\f052";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.unmute:before {
+  content: "\f130";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mute:before {
+  content: "\f131";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.video.play:before {
+  content: "\f144";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.closed.captioning:before {
+  content: "\f20a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.marker:before {
+  content: "\f041";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.coffee:before {
+  content: "\f0f4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.food:before {
+  content: "\f0f5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.building.outline:before {
+  content: "\f0f7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hospital:before {
+  content: "\f0f8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.emergency:before {
+  content: "\f0f9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.first.aid:before {
+  content: "\f0fa";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.military:before {
+  content: "\f0fb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.h:before {
+  content: "\f0fd";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.location.arrow:before {
+  content: "\f124";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.space.shuttle:before {
+  content: "\f197";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.university:before {
+  content: "\f19c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.building:before {
+  content: "\f1ad";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.paw:before {
+  content: "\f1b0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.spoon:before {
+  content: "\f1b1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.car:before {
+  content: "\f1b9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.taxi:before {
+  content: "\f1ba";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tree:before {
+  content: "\f1bb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bicycle:before {
+  content: "\f206";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bus:before {
+  content: "\f207";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ship:before {
+  content: "\f21a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.motorcycle:before {
+  content: "\f21c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.street.view:before {
+  content: "\f21d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hotel:before {
+  content: "\f236";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.train:before {
+  content: "\f238";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.subway:before {
+  content: "\f239";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.table:before {
+  content: "\f0ce";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.columns:before {
+  content: "\f0db";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort:before {
+  content: "\f0dc";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort.ascending:before {
+  content: "\f0de";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort.descending:before {
+  content: "\f0dd";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort.alphabet.ascending:before {
+  content: "\f15d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort.alphabet.descending:before {
+  content: "\f15e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort.content.ascending:before {
+  content: "\f160";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort.content.descending:before {
+  content: "\f161";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort.numeric.ascending:before {
+  content: "\f162";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sort.numeric.descending:before {
+  content: "\f163";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.font:before {
+  content: "\f031";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bold:before {
+  content: "\f032";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.italic:before {
+  content: "\f033";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.text.height:before {
+  content: "\f034";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.text.width:before {
+  content: "\f035";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.align.left:before {
+  content: "\f036";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.align.center:before {
+  content: "\f037";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.align.right:before {
+  content: "\f038";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.align.justify:before {
+  content: "\f039";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.list:before {
+  content: "\f03a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.outdent:before {
+  content: "\f03b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.indent:before {
+  content: "\f03c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.linkify:before {
+  content: "\f0c1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cut:before {
+  content: "\f0c4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.copy:before {
+  content: "\f0c5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.attach:before {
+  content: "\f0c6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.save:before {
+  content: "\f0c7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.content:before {
+  content: "\f0c9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.unordered.list:before {
+  content: "\f0ca";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ordered.list:before {
+  content: "\f0cb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.strikethrough:before {
+  content: "\f0cc";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.underline:before {
+  content: "\f0cd";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.paste:before {
+  content: "\f0ea";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.unlink:before {
+  content: "\f127";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.superscript:before {
+  content: "\f12b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.subscript:before {
+  content: "\f12c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.header:before {
+  content: "\f1dc";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.paragraph:before {
+  content: "\f1dd";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.euro:before {
+  content: "\f153";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pound:before {
+  content: "\f154";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dollar:before {
+  content: "\f155";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.rupee:before {
+  content: "\f156";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.yen:before {
+  content: "\f157";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ruble:before {
+  content: "\f158";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.won:before {
+  content: "\f159";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lira:before {
+  content: "\f195";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.shekel:before {
+  content: "\f20b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.paypal:before {
+  content: "\f1ed";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.paypal.card:before {
+  content: "\f1f4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.google.wallet:before {
+  content: "\f1ee";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.visa:before {
+  content: "\f1f0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mastercard:before {
+  content: "\f1f1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.discover:before {
+  content: "\f1f2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.american.express:before {
+  content: "\f1f3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.stripe:before {
+  content: "\f1f5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.twitter.square:before {
+  content: "\f081";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.facebook.square:before {
+  content: "\f082";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.linkedin.square:before {
+  content: "\f08c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.github.square:before {
+  content: "\f092";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.twitter:before {
+  content: "\f099";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.facebook:before {
+  content: "\f09a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.github:before {
+  content: "\f09b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pinterest:before {
+  content: "\f0d2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pinterest.square:before {
+  content: "\f0d3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.google.plus.square:before {
+  content: "\f0d4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.google.plus:before {
+  content: "\f0d5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.linkedin:before {
+  content: "\f0e1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.github.alternate:before {
+  content: "\f113";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.maxcdn:before {
+  content: "\f136";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bitcoin:before {
+  content: "\f15a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.youtube.square:before {
+  content: "\f166";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.youtube:before {
+  content: "\f167";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.xing:before {
+  content: "\f168";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.xing.square:before {
+  content: "\f169";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.youtube.play:before {
+  content: "\f16a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dropbox:before {
+  content: "\f16b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.stack.overflow:before {
+  content: "\f16c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.instagram:before {
+  content: "\f16d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.flickr:before {
+  content: "\f16e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.adn:before {
+  content: "\f170";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bitbucket:before {
+  content: "\f171";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bitbucket.square:before {
+  content: "\f172";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tumblr:before {
+  content: "\f173";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tumblr.square:before {
+  content: "\f174";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.apple:before {
+  content: "\f179";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.windows:before {
+  content: "\f17a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.android:before {
+  content: "\f17b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.linux:before {
+  content: "\f17c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dribbble:before {
+  content: "\f17d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.skype:before {
+  content: "\f17e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.foursquare:before {
+  content: "\f180";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.trello:before {
+  content: "\f181";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.gittip:before {
+  content: "\f184";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.vk:before {
+  content: "\f189";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.weibo:before {
+  content: "\f18a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.renren:before {
+  content: "\f18b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pagelines:before {
+  content: "\f18c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.stack.exchange:before {
+  content: "\f18d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.vimeo:before {
+  content: "\f194";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.slack:before {
+  content: "\f198";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.wordpress:before {
+  content: "\f19a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.yahoo:before {
+  content: "\f19e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.google:before {
+  content: "\f1a0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.reddit:before {
+  content: "\f1a1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.reddit.square:before {
+  content: "\f1a2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.stumbleupon.circle:before {
+  content: "\f1a3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.stumbleupon:before {
+  content: "\f1a4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.delicious:before {
+  content: "\f1a5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.digg:before {
+  content: "\f1a6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pied.piper:before {
+  content: "\f1a7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pied.piper.alternate:before {
+  content: "\f1a8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.drupal:before {
+  content: "\f1a9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.joomla:before {
+  content: "\f1aa";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.behance:before {
+  content: "\f1b4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.behance.square:before {
+  content: "\f1b5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.steam:before {
+  content: "\f1b6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.steam.square:before {
+  content: "\f1b7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.spotify:before {
+  content: "\f1bc";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.deviantart:before {
+  content: "\f1bd";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.soundcloud:before {
+  content: "\f1be";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.vine:before {
+  content: "\f1ca";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.codepen:before {
+  content: "\f1cb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.jsfiddle:before {
+  content: "\f1cc";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.rebel:before {
+  content: "\f1d0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.empire:before {
+  content: "\f1d1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.git.square:before {
+  content: "\f1d2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.git:before {
+  content: "\f1d3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hacker.news:before {
+  content: "\f1d4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tencent.weibo:before {
+  content: "\f1d5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.qq:before {
+  content: "\f1d6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.wechat:before {
+  content: "\f1d7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.slideshare:before {
+  content: "\f1e7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.twitch:before {
+  content: "\f1e8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.yelp:before {
+  content: "\f1e9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lastfm:before {
+  content: "\f202";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lastfm.square:before {
+  content: "\f203";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ioxhost:before {
+  content: "\f208";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.angellist:before {
+  content: "\f209";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.meanpath:before {
+  content: "\f20c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.buysellads:before {
+  content: "\f20d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.connectdevelop:before {
+  content: "\f20e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dashcube:before {
+  content: "\f210";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.forumbee:before {
+  content: "\f211";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.leanpub:before {
+  content: "\f212";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sellsy:before {
+  content: "\f213";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.shirtsinbulk:before {
+  content: "\f214";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.simplybuilt:before {
+  content: "\f215";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.skyatlas:before {
+  content: "\f216";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.whatsapp:before {
+  content: "\f232";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.viacoin:before {
+  content: "\f237";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.medium:before {
+  content: "\f23a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.like:before {
+  content: "\f004";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.favorite:before {
+  content: "\f005";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.video:before {
+  content: "\f008";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.check:before {
+  content: "\f00c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cancel:before, i.icon.close:before, i.icon.delete:before, i.icon.remove:before, i.icon.x:before {
+  content: "\f00d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.user.cancel:before, i.icon.user.close:before, i.icon.user.delete:before, i.icon.user.times:before, i.icon.user.x:before {
+  content: "\f235";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.magnify:before, i.icon.zoom.in:before {
+  content: "\f00e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.shutdown:before {
+  content: "\f011";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.clock:before, i.icon.time:before {
+  content: "\f017";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.play.circle.outline:before {
+  content: "\f01d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.headphone:before {
+  content: "\f025";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.volume.off:before {
+  content: "\f026";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.camera:before {
+  content: "\f030";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.video.camera:before {
+  content: "\f03d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.picture:before {
+  content: "\f03e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.compose:before, i.icon.pencil:before {
+  content: "\f040";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.point:before {
+  content: "\f041";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tint:before {
+  content: "\f043";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.signup:before {
+  content: "\f044";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.plus.circle:before {
+  content: "\f055";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.minus.circle:before {
+  content: "\f056";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dont:before {
+  content: "\f05e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.minimize:before {
+  content: "\f066";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.add:before {
+  content: "\f067";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.eye:before {
+  content: "\f06e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cart:before {
+  content: "\f07a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.shuffle:before {
+  content: "\f074";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.chat:before, i.icon.talk:before {
+  content: "\f075";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.shopping.cart:before {
+  content: "\f07a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bar.graph:before {
+  content: "\f080";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.area.graph:before {
+  content: "\f1fe";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pie.graph:before {
+  content: "\f200";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.line.graph:before {
+  content: "\f201";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.key:before, i.icon.privacy:before {
+  content: "\f084";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cogs:before {
+  content: "\f085";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.discussions:before {
+  content: "\f086";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.like.outline:before {
+  content: "\f087";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dislike.outline:before {
+  content: "\f088";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.heart.outline:before {
+  content: "\f08a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.log.out:before {
+  content: "\f08b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.thumb.tack:before {
+  content: "\f08d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.winner:before {
+  content: "\f091";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bookmark.outline:before {
+  content: "\f097";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.phone:before {
+  content: "\f095";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.phone.square:before {
+  content: "\f098";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.credit.card:before {
+  content: "\f09d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hdd.outline:before {
+  content: "\f0a0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bullhorn:before {
+  content: "\f0a1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bell:before {
+  content: "\f0f3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bell.slash:before {
+  content: "\f1f6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bell.slash.outline:before {
+  content: "\f1f7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hand.outline.right:before {
+  content: "\f0a4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hand.outline.left:before {
+  content: "\f0a5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hand.outline.up:before {
+  content: "\f0a6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.hand.outline.down:before {
+  content: "\f0a7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.globe:before {
+  content: "\f0ac";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.wrench:before {
+  content: "\f0ad";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.briefcase:before {
+  content: "\f0b1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.group:before {
+  content: "\f0c0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.flask:before {
+  content: "\f0c3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bars:before, i.icon.sidebar:before {
+  content: "\f0c9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.list.ul:before {
+  content: "\f0ca";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.list.ol:before, i.icon.numbered.list:before {
+  content: "\f0cb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.magic:before {
+  content: "\f0d0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.truck:before {
+  content: "\f0d1";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.currency:before {
+  content: "\f0d6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dropdown:before, i.icon.triangle.down:before {
+  content: "\f0d7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.triangle.up:before {
+  content: "\f0d8";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.triangle.left:before {
+  content: "\f0d9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.triangle.right:before {
+  content: "\f0da";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.envelope:before {
+  content: "\f0e0";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.conversation:before {
+  content: "\f0e6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lightning:before {
+  content: "\f0e7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.umbrella:before {
+  content: "\f0e9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.lightbulb:before {
+  content: "\f0eb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.suitcase:before {
+  content: "\f0f2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bell.outline:before {
+  content: "\f0a2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ambulance:before {
+  content: "\f0f9";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.medkit:before {
+  content: "\f0fa";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.fighter.jet:before {
+  content: "\f0fb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.beer:before {
+  content: "\f0fc";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.plus.square:before {
+  content: "\f0fe";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.computer:before {
+  content: "\f108";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.asexual:before, i.icon.circle.outline:before, i.icon.intersex:before {
+  content: "\f10c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.spinner:before {
+  content: "\f110";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.gamepad:before {
+  content: "\f11b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.star.half.full:before {
+  content: "\f123";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.question:before {
+  content: "\f128";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.attention:before {
+  content: "\f12a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.eraser:before {
+  content: "\f12d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.microphone:before {
+  content: "\f130";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.microphone.slash:before {
+  content: "\f131";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.shield:before {
+  content: "\f132";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.target:before {
+  content: "\f140";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.play.circle:before {
+  content: "\f144";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pencil.square:before {
+  content: "\f14b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.compass:before {
+  content: "\f14e";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.amex:before {
+  content: "\f1f3";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.eur:before {
+  content: "\f153";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.gbp:before {
+  content: "\f154";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.usd:before {
+  content: "\f155";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.inr:before {
+  content: "\f156";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cny:before, i.icon.jpy:before, i.icon.rmb:before {
+  content: "\f157";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.rouble:before, i.icon.rub:before {
+  content: "\f158";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.krw:before, i.icon.won:before {
+  content: "\f159";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.btc:before {
+  content: "\f15a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ils:before, i.icon.sheqel:before {
+  content: "\f20b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.try:before {
+  content: "\f195";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.zip:before {
+  content: "\f187";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.dot.circle.outline:before {
+  content: "\f192";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.sliders:before {
+  content: "\f1de";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.wi-fi:before {
+  content: "\f1eb";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.graduation:before {
+  content: "\f19d";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.\33d:before {
+  content: "\f1b2";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.weixin:before {
+  content: "\f1d7";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.binoculars:before {
+  content: "\f1e5";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.gratipay:before {
+  content: "\f184";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.genderless:before {
+  content: "\f1db";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.teletype:before {
+  content: "\f1e4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.power.cord:before {
+  content: "\f1e6";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.tty:before {
+  content: "\f1e4";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.cc:before {
+  content: "\f20a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.ils:before {
+  content: "\f20b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.plus.cart:before {
+  content: "\f217";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.arrow.down.cart:before {
+  content: "\f218";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.detective:before {
+  content: "\f21b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.venus:before {
+  content: "\f221";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mars:before {
+  content: "\f222";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mercury:before {
+  content: "\f223";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.female.homosexual:before, i.icon.venus.double:before {
+  content: "\f226";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.male.homosexual:before, i.icon.mars.double:before {
+  content: "\f227";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.venus.mars:before {
+  content: "\f228";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mars.alternate:before, i.icon.mars.stroke:before {
+  content: "\f229";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mars.vertical:before {
+  content: "\f22a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mars.horizontal:before {
+  content: "\f22b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mars.stroke.vertical:before {
+  content: "\f22a";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.mars.stroke.horizontal:before {
+  content: "\f22b";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.neuter:before {
+  content: "\f22c";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.facebook.official {
+  content: "\f230";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.pinterest.official {
+  content: "\f231";
+}
+
+/* line 10, ../sass/icon.min.scss */
+i.icon.bed:before {
+  content: "\f236";
+}
