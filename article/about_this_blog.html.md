@@ -9,7 +9,7 @@ About this blog
 
 1. Host: github page
 2. DNS: pchome + Cloudflare
-3. Template css: Bootstrap 2
+3. Template css: Semantic UI
 4. Build tool: Fire.app
 
 其實 Fire.app 我之前都是拿來設計網頁原型用的，但是用他來製作靜態網頁也不差，所以就拿它來用了。
