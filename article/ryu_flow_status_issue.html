@@ -99,12 +99,22 @@ pcap 以及 debug message 檔案，發現並不是這麼一回事。</p>
 <p>在呼叫 ofctl_v1_x.get_flow_stats 時，會將 waiter 帶入，要注意的是這一個 waiter 在這一支
 應用程式中只會有一個，他所儲存的內容是一個 dict 資料結構，大致的內容如下：</p>
 
-<p>waiters -&gt; {dpid: waiter} : 每一個 switch 都會有對用的 waiter
-waiter -&gt; {xid: (lock, msgs)} : 每一個事件回應的 xid 都是在送出事件是就決定好了
-因此可以用 xid 推論回送出的事件，並且找出他的回應應該要存在哪邊（msgs），以及決定該
-事件的 lock，這一個 lock 有兩個用途，一個是用於等待時間，另一個是當這一個 lock
-如果有被設定（lock.set()）的話，則表示該事件有正常的結束回應（收到一個 flag 為 0 的 reply），否則
-就將該 waiter 直接移除，隨後相同 xid 的 reply <em>將不會在被收到</em></p>
+<p>waiters -&gt; {dpid: waiter} : 每一個 switch 都會有對用的 waiter</p>
+
+<p>waiter -&gt; {xid: (lock, msgs)} : </p>
+
+<p>每一個事件回應的 xid 都是在送出事件是就決定好了</p>
+
+<p>因此可以用 xid 推論回送出的事件，並且找出他的回應應該要存在哪邊（msgs），以及決定該
+事件的 lock</p>
+
+<p>這一個 lock 有兩個用途：</p>
+
+<ul>
+  <li>用於等待時間(timeout)</li>
+  <li>另一個是當這一個 lock 如果有被設定（lock.is_set()）的話，則表示該事件有正常的結束回應（收到一個 flag 為 0 的 reply），否則
+就將該 waiter 直接移除，隨後相同 xid 的 reply <em>將不會在被收到</em></li>
+</ul>
 
 <p>get_flow_status 中會呼叫一個名為 send_stats_request 的 method，他的內容如下：</p>
 
@@ -119,11 +129,14 @@ waiter -&gt; {xid: (lock, msgs)} : 每一個事件回應的 xid 都是在送出�
     if not lock.is_set():
         del waiters_per_dp[stats.xid]</code></pre>
 
-<p>參數說明如下：
-1. dp: 表示要送往的 Switch
-2. stats: 一個 OpenFlow message，在這邊給予 xid
-3. waiters: 同剛剛的說明，他會把 lock, msgs, xid 放到這裡面
-4. msgs: 用來保存接收到的訊息</p>
+<p>參數說明如下：</p>
+
+<ol>
+  <li>dp: 表示要送往的 Switch</li>
+  <li>stats: 一個 OpenFlow message，在這邊給予 xid</li>
+  <li>waiters: 同剛剛的說明，他會把 lock, msgs, xid 放到這裡面</li>
+  <li>msgs: 用來保存接收到的訊息</li>
+</ol>
 
 <p>再來他會將該設定的東西設定好，例如 waiters 裡面會需要有 dpid -&gt; waiter -&gt; xid -&gt; (lock, msgs) 這樣的資訊
 ，並且會給予要送出去的訊息一個 xid，再來就是建立 lock。</p>
