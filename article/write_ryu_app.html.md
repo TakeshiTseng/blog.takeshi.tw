@@ -2,7 +2,7 @@
 ====
 ----
 
-由於最近在翻譯 Ryu 官方文件，所以想說依據官方玩見做一些改良並且把它寫成另外一篇教學。
+由於最近在翻譯 Ryu 官方文件，所以想說依據官方文件做一些改良並且把它寫成另外一篇教學。
 
 有關 Ryu 應用程式
 ----
@@ -12,109 +12,142 @@ Ryu 這一套 Framework/Controller 不像是其他的 Controller 一樣，開起
 他們最主要是希望能夠提供需多可以使用的 API 或是「零件」讓開發者能夠用相當簡單
 的方式去自行撰寫想要的網路功能。
 
-不過
+不過 ryu 本身也有提供相當多的範例可以使用，例如 simple_xxxxx、rest_xxxxx 等等，
+但是多數的情況未必是開發者想要的，所以一般而言不會直接拿官方範例作為一般用途。
 
-開始撰寫
+Ryu 應用程式區塊
+----
 ----
 
-我們透過 Ryu 應用程式將一個 OpenFlow 交換器轉變成為一個第二層(OSI Layer 2)交換器
+我認為 Ryu 的應用程式分為幾個部分可以拿出來探討：
 
-開啟文字編輯器，並撰寫以下程式：
-
-.. code-block:: python
-   
-   from ryu.base import app_manager
-   
-   class L2Switch(app_manager.RyuApp):
-       def __init__(self, *args, **kwargs):
-           super(L2Switch, self).__init__(*args, **kwargs)
-
-由於 Ryu 應用程式是使用 python 所撰寫而成，所以你可以儲存成任何名稱以及任何
-副檔名，在這個範例中，我們將它儲存成 'l2.py'，並放置在家目錄中。
-
-目前這一支程式並沒有任何的功能，但是他卻是一支完整的 Ryu 應用程式，事實上，
-你可以輸入以下指令來執行這一支程式::
-   
-   % ryu-manager ~/l2.py
-   loading app /Users/fujita/l2.py
-   instantiating app /Users/fujita/l2.py
-
-在上述程式中我們可以知道，要撰寫一支 Ryu 應用程式，你只需要將你的應用程式類別繼承自 RyuApp 即可。
-
-接者讓我們新增一個可以接收來自所有埠口(port)封包進入事件(Packet in event)的功能，
-其程式碼如下
-
-.. code-block:: python
-   
-   from ryu.base import app_manager
-   from ryu.controller import ofp_event
-   from ryu.controller.handler import MAIN_DISPATCHER
-   from ryu.controller.handler import set_ev_cls
-   
-   class L2Switch(app_manager.RyuApp):
-       def __init__(self, *args, **kwargs):
-           super(L2Switch, self).__init__(*args, **kwargs)
-   
-       @set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
-       def packet_in_handler(self, ev):
-           msg = ev.msg
-           dp = msg.datapath
-           ofp = dp.ofproto
-           ofp_parser = dp.ofproto_parser
-   
-           actions = [ofp_parser.OFPActionOutput(ofp.OFPP_FLOOD)]
-           out = ofp_parser.OFPPacketOut(
-               datapath=dp, buffer_id=msg.buffer_id, in_port=msg.in_port,
-               actions=actions)
-           dp.send_msg(out)
+ * 初始化帶入的東西
+   * CONTEXTS
+   * EVENT
+   * OFP_VERSIONS
+ * 各式各樣的 Event Handler
+ * 自定義的 Function
 
 
-在 L2Switch 中新增一個叫做 'packet_in_handler' 的方法，這一個方法會在
-Ryu 接收到 OpenFlow packet_in 訊息時被呼叫。
-我們可以透過 'set_ev_cls' 去讓 Ryu 知道當 packet in 訊息傳入時，
-它需要將這一個事件帶入此一方法當中。
+Ryu 應用程式類別
+----
+----
 
-註：同一事件可以註冊給多個不同的應用程式以及方法
+原則上每一個 Ryu 應用程式都必須繼承自 RyuAPP 這一個類別，如下：
 
-在 set_ev_cls 中，第一個參數(ev)是這一個事件的類別，該類別定義包含事件所需要
-的訊息，當 Ryu 收到該事件所對應到的訊息時，都會透過該類別產生事件，
-並去呼叫已註冊的方法。
+<pre><code class="python">from ryu.base import app_manager import RyuApp
 
-第二個參數則表示該事件要在交換器的某一個狀態下發送，例如開發者一般來說
-在交換器與 Ryu 在完成連接之前不希望收到 packet in 訊息。
-使用 'MAIN_DISPATCHER' 可以確保交換器與 Ryu 在完成連接之後才會收到
-該訊息。
+class MyRyuApp(app_manager.RyuApp):
+    def __init__(self, *args, **kwargs):
+        super(MyRyuApp, self).__init__(*args, **kwargs)
 
-接下來我們來看一下 'packet_in_handler' 中的一些細節。
+</code></pre>
 
-* ev.msg 表示 packet_in 訊息的資料
+OFP_VERSIONS
+----
+----
 
-* msg.dp 表示這一個訊息是由哪一個 Datapath(switch) 送過來，我們能夠透過
-  這一個物件去與該交換器去做互動。
+接下來我們可以在裡面加入 OFP_VERSIONS 這一項給 Class 的屬性，這一個屬性表示了這一個 RyuApp 支援的
+OpenFlow 版本
 
-* dp.ofproto 以及 dp.ofproto_parser 表示了這一個訊息使用了哪一個版本
-  的 OpenFlow 協定，以及它的解析器。
+<pre><code class="python">OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]</code></pre>
 
-* OFPActionOutput 是在 packet_out 訊息中，用於設定它應該要走哪一個交換器的
-  埠口(port)出去。這一個應用程式會將一個封包送到所有其他的埠口，因此我們這邊使
-  用了 OFPP_FLOOD 這一個常去來設定它的目的地。
+若 Switch 的 OpenFlow 版本不符合 App 的話，則 Ryu 會顯示錯誤訊息。
 
-* OFPPacketOut 類別用來建立 packet_out 訊息
+CONTEXTS
+----
+----
 
-* 如果你呼叫了在 Datapath 中的 send_msg 方法，並給予 OpenFlow 訊息物件，
-  Ryu 會將訊息轉換並且送至該交換器中。
+在 Ryu 的應用程式中，有時候會使用到額外的函式庫或是而外的應用程式，此時我們可以將他放在 CONTEXTS 中
+，放在 CONTEXTS 中的類別，在 Ryu manager 載入時，會將他們初始化並且將他們放入建構子中的 kwargs
+中，CONTEXTS 是一個 dict 資料型態，key 表示了 kwargs 中對用的 key，而value 則是類別。
+
+如果放在 CONTEXTS 中的類別剛好是一個 RyuApp 的子類別話，則他除了產生物件之外，還會被放到 app_manager
+的 Service brick 中，這樣一來，他也會去處理他有註冊的事件。
+
+註：在不同的 Ryu 應用程式中，CONTEXTS名稱 _不可以相同_
+
+以下是 CONTEXT 寫法：
+
+<pre><code class="python">_CONTEXTS = {
+    'some_thing': SomeThing
+}
+</code></pre>
+
+如果 SomeThing 不是一個 RyuApp 的子類別的話，則他的效果 _類似_ 這樣
+
+<pre><code class="python">kwargs['some_thing'] = SomeThing()</code></pre>
 
 
-在這邊你完成了你的第一個 Ryu 應用程式，你已經能夠使用這個應用程式去讓網路
-能夠以第二層交換器的邏輯運作。
+EVENT
+----
+----
 
-若你覺得 L2 交換器過於笨拙以及簡單，您可以參考其他的
-`應用程式範例
-<https://github.com/osrg/ryu/blob/master/ryu/app/simple_switch.py>`_
+在 Ryu 的官方文件有提到，每一個 App 都可以自定 Event 並且傳送給其他有註冊的的 Ryu 應用程式，
+但是 Ryu manager 並不會去掃描每一行程式看你這一支程式是否會送出特定的 Event，在這邊有兩種作法
+能夠讓 Ryu manager 知道某一支 Ryu 應用程式會送出特定的 Event。
 
-你也可以在
-`ryu/app
-<https://github.com/osrg/ryu/blob/master/ryu/app/>`_ 
-資料夾以及 `綜合測試
-<https://github.com/osrg/ryu/blob/master/ryu/tests/integrated/>`_
-中學到其他的應用程式以及網路功能的撰寫方式
+第一種就是將 Event 跟 Ryu App 放置在相同的 python 檔案下面，並且在該程式的建構子中將他的
+name 屬性設定成為該檔案（模組）的名稱。
+
+舉例來說 snort lib 這一支 RyuApp
+
+https://github.com/osrg/ryu/blob/master/ryu/lib/snortlib.py#L40
+
+<pre><code class="python">class EventAlert(event.EventBase):
+    def __init__(self, msg):
+        super(EventAlert, self).__init__()
+        self.msg = msg
+
+
+class SnortLib(app_manager.RyuApp):
+
+    def __init__(self):
+        super(SnortLib, self).__init__()
+        self.name = 'snortlib'
+        self.config = {'unixsock': True}
+        self._set_logger()</code></pre>
+        
+        
+Ryu manager 會自動的去認定說該 App 會送出 EventAlert 這一個事件
+
+第二中方法是在類別中撰寫 EVENT 資訊，會這樣寫著要是因為 Event 類別跟 Ryu App 放在
+不同的 module 中，或是開發者避免去修改到 name 屬性以免影響其他事件傳送。
+
+EVNET 寫法比較單純，只需要在類別中加入 EVENT 變數即可。
+
+<pre><code class="python">_EVENTS = [EventBlaBlaBla]</code></pre>
+
+這樣一來 manager 就會認定這一支 Ryu App 在執行過程中可能會送出 EventBlaBlaBla 事件類別所產生的事件。
+
+
+Event handler
+----
+----
+
+接下來另一個應用程式的主要部分就是處理事件的處理器（Handler），Ryu 這一套架構本身可以視為一個事件分配器
+，他會協助不同的應用程式傳遞事件。
+
+每一個應用程式都必須要事先註冊好他想要處理的事件，而 OpenFlow Message 所產生的事件只是其中一部分而已。
+
+補充：在一個 OpenFlow 訊息送至 Controller 後，所產生的事件 _並不會_ 依照特定的順序傳送給有註冊的 App，
+其他的控制器如 Floodlight 有實作事件傳遞的順序，而 Ryu 並沒有實作，但是 _他是有辦法_ 實作出這樣的功能
+，只是 _目前沒有人做_ 而已。
+
+補充2：Ryu 會將訊息傳遞至 _所有_ 有註冊該訊息的應用程式，開發者不能限制某個訊息在經過某個 App 後就停止傳遞
+，同上一個補充，Floodlight 或是 ONOS 可以做到。
+
+
+要將一個類別中的方法註冊成為 Event Handler，只需要在該方法前加入一個 python decorator 即可，
+如下（節錄自 simple_switch_13.py）：
+
+<pre><code class="python">from ryu.controller.handler import set_ev_cls
+# skip.....
+@set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
+def _packet_in_handler(self, ev):
+    # do something....
+</code></pre>
+
+
+
+
