@@ -112,5 +112,21 @@ Thanks for great help
 
 Mark</code></pre>
 
+後續 PATCH
+----
+----
+
+後來我在 Ryu 的 Ml 裡面有提到這件事情，並且補上了 patch XD
+
+目前的作法就是把原先的 Hard timeout 改成 idle timeout 邏輯，在每一次有新的 reply 時就在繼續等待
+，若等待後沒有任何更新，則有兩種可能：
+
+1. 它確實是更新完畢了。
+2. 它其實還是有東西要送過來，只是兩個 reply 之間太久了（可能是網路問題），導致 reply 過不來，這時候
+timeout 就發揮它真正的效用，避免整個 Ryu App 被卡住。
+
+目前（8/6 00:23）PATCH 才剛送出去，還沒有補上（畢竟他們可能在睡覺 XD），可能要等到早上才有結果。
+
+
 
 [1]: http://sourceforge.net/p/ryu/mailman/message/34347766/
