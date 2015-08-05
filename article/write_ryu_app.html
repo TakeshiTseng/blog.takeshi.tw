@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="utf-8">
+        <title>Takeshi's blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Tseng Yi">
+        <meta name="author" content="Takeshi">
+
+        <!-- Le styles -->
+        <link href="/stylesheets/semantic.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/stylesheets/icon.min.css" media="screen" rel="stylesheet" type="text/css" />
+        
+        
+        <link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.css">
+        <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
+        
+
+        <style type="text/css">
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+        </style>
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    </head>
+
+    <body>
+
+        <div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a href="/" class="header item">
+            Takeshi's Blog
+        </a>
+
+
+        <a class="item" href="/article">Article</a>
+        <a class="item" href="/about.html">About</a>
+    </div>
+</div>
+
+
+
+        <!-- fork me on github -->
+        <a href="https://github.com/TakeshiTseng/blog.takeshi.tw"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 1032;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+
+
+        
+        <div id="article-content" class="ui text container piled segment" style="min-height: 450px;">
+            <h1 id="ryu-app">撰寫一支 Ryu App</h1>
+<hr />
+
+<p>由於最近在翻譯 Ryu 官方文件，所以想說依據官方文件做一些改良並且把它寫成另外一篇教學。</p>
+
+<h2 id="ryu-">有關 Ryu 應用程式</h2>
+
+<p>Ryu 這一套 Framework/Controller 不像是其他的 Controller 一樣，開起來就
+提供了大量的功能給開發者會是使用者使用，它只有提供一些相當簡單的功能而已，
+他們最主要是希望能夠提供需多可以使用的 API 或是「零件」讓開發者能夠用相當簡單
+的方式去自行撰寫想要的網路功能。</p>
+
+<p>不過 ryu 本身也有提供相當多的範例可以使用，例如 simple_xxxxx、rest_xxxxx 等等，
+但是多數的情況未必是開發者想要的，所以一般而言不會直接拿官方範例作為一般用途。</p>
+
+<h2 id="ryu--1">Ryu 應用程式區塊</h2>
+<hr />
+
+<p>我認為 Ryu 的應用程式分為幾個部分可以拿出來探討：</p>
+
+<ul>
+  <li>初始化帶入的東西
+    <ul>
+      <li>CONTEXTS</li>
+      <li>EVENT</li>
+      <li>OFP_VERSIONS</li>
+    </ul>
+  </li>
+  <li>各式各樣的 Event Handler</li>
+  <li>自定義的 Function</li>
+</ul>
+
+<h2 id="ryu--2">Ryu 應用程式類別</h2>
+<hr />
+
+<p>原則上每一個 Ryu 應用程式都必須繼承自 RyuAPP 這一個類別，如下：</p>
+
+<pre><code class="python">from ryu.base import app_manager import RyuApp
+
+class MyRyuApp(app_manager.RyuApp):
+    def __init__(self, *args, **kwargs):
+        super(MyRyuApp, self).__init__(*args, **kwargs)
+
+</code></pre>
+
+<h2 id="ofpversions">OFP_VERSIONS</h2>
+<hr />
+
+<p>接下來我們可以在裡面加入 OFP_VERSIONS 這一項給 Class 的屬性，這一個屬性表示了這一個 RyuApp 支援的
+OpenFlow 版本</p>
+
+<pre><code class="python">OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]</code></pre>
+
+<p>若 Switch 的 OpenFlow 版本不符合 App 的話，則 Ryu 會顯示錯誤訊息。</p>
+
+<h2 id="contexts">CONTEXTS</h2>
+<hr />
+
+<p>在 Ryu 的應用程式中，有時候會使用到額外的函式庫或是而外的應用程式，此時我們可以將他放在 CONTEXTS 中
+，放在 CONTEXTS 中的類別，在 Ryu manager 載入時，會將他們初始化並且將他們放入建構子中的 kwargs
+中，CONTEXTS 是一個 dict 資料型態，key 表示了 kwargs 中對用的 key，而value 則是類別。</p>
+
+<p>如果放在 CONTEXTS 中的類別剛好是一個 RyuApp 的子類別話，則他除了產生物件之外，還會被放到 app_manager
+的 Service brick 中，這樣一來，他也會去處理他有註冊的事件。</p>
+
+<p>註：在不同的 Ryu 應用程式中，CONTEXTS名稱 <em>不可以相同</em></p>
+
+<p>以下是 CONTEXT 寫法：</p>
+
+<pre><code class="python">_CONTEXTS = {
+    'some_thing': SomeThing
+}
+</code></pre>
+
+<p>如果 SomeThing 不是一個 RyuApp 的子類別的話，則他的效果 <em>類似</em> 這樣</p>
+
+<pre><code class="python">kwargs['some_thing'] = SomeThing()</code></pre>
+
+<h2 id="event">EVENT</h2>
+<hr />
+
+<p>在 Ryu 的官方文件有提到，每一個 App 都可以自定 Event 並且傳送給其他有註冊的的 Ryu 應用程式，
+但是 Ryu manager 並不會去掃描每一行程式看你這一支程式是否會送出特定的 Event，在這邊有兩種作法
+能夠讓 Ryu manager 知道某一支 Ryu 應用程式會送出特定的 Event。</p>
+
+<p>第一種就是將 Event 跟 Ryu App 放置在相同的 python 檔案下面，並且在該程式的建構子中將他的
+name 屬性設定成為該檔案（模組）的名稱。</p>
+
+<p>舉例來說 snort lib 這一支 RyuApp</p>
+
+<p>https://github.com/osrg/ryu/blob/master/ryu/lib/snortlib.py#L40</p>
+
+<pre><code class="python">class EventAlert(event.EventBase):
+    def __init__(self, msg):
+        super(EventAlert, self).__init__()
+        self.msg = msg
+
+
+class SnortLib(app_manager.RyuApp):
+
+    def __init__(self):
+        super(SnortLib, self).__init__()
+        self.name = 'snortlib'
+        self.config = {'unixsock': True}
+        self._set_logger()</code></pre>
+
+<p>Ryu manager 會自動的去認定說該 App 會送出 EventAlert 這一個事件</p>
+
+<p>第二中方法是在類別中撰寫 EVENT 資訊，會這樣寫著要是因為 Event 類別跟 Ryu App 放在
+不同的 module 中，或是開發者避免去修改到 name 屬性以免影響其他事件傳送。</p>
+
+<p>EVNET 寫法比較單純，只需要在類別中加入 EVENT 變數即可。</p>
+
+<pre><code class="python">_EVENTS = [EventBlaBlaBla]</code></pre>
+
+<p>這樣一來 manager 就會認定這一支 Ryu App 在執行過程中可能會送出 EventBlaBlaBla 事件類別所產生的事件。</p>
+
+<h2 id="event-handler">Event handler</h2>
+<hr />
+
+<p>接下來另一個應用程式的主要部分就是處理事件的處理器（Handler），Ryu 這一套架構本身可以視為一個事件分配器
+，他會協助不同的應用程式傳遞事件。</p>
+
+<p>每一個應用程式都必須要事先註冊好他想要處理的事件，而 OpenFlow Message 所產生的事件只是其中一部分而已。</p>
+
+<p>補充：在一個 OpenFlow 訊息送至 Controller 後，所產生的事件 <em>並不會</em> 依照特定的順序傳送給有註冊的 App，
+其他的控制器如 Floodlight 有實作事件傳遞的順序，而 Ryu 並沒有實作，但是 <em>他是有辦法</em> 實作出這樣的功能
+，只是 <em>目前沒有人做</em> 而已。</p>
+
+<p>補充2：Ryu 會將訊息傳遞至 <em>所有</em> 有註冊該訊息的應用程式，開發者不能限制某個訊息在經過某個 App 後就停止傳遞
+，同上一個補充，Floodlight 或是 ONOS 可以做到。</p>
+
+<p>要將一個類別中的方法註冊成為 Event Handler，只需要在該方法前加入一個 python decorator 即可，
+如下（節錄自 simple_switch_13.py）：</p>
+
+<pre><code class="python">from ryu.controller.handler import set_ev_cls
+# skip.....
+@set_ev_cls(ofp_event.EventOFPPacketIn, MAIN_DISPATCHER)
+def _packet_in_handler(self, ev):
+    # do something....
+</code></pre>
+
+<p>每一個 Event Handler 中都會有一個參數（ev），這一個參數會是在 decorator 中第一個參數類別所產生的
+事件實體，而 set_ev_cls 中第二個表示了要接收哪一個階段的事件，舉例來說如果想要處理在交握階段（Hand shake）
+的事件，後方的參數就會是 HANDSHAKE_DISPATCHER，當然，可以使用 list 作為第二個參數以表示多個
+階段的事件監聽。</p>
+
+<h2 id="function">自定義 function</h2>
+<hr />
+
+<p>這部份其實沒有什麼好說明，一般而言除了 event handler 以外，通常在處理複雜的網路規則時，不會把
+所有的東西都塞在同一個 method 中（至少我是這樣），這會讓程式變得複雜且難維護。</p>
+
+<h2 id="section">參考</h2>
+<hr />
+
+<ol>
+  <li><a href="http://ryu.readthedocs.org/en/latest/">Ryu documant</a></li>
+  <li><a href="http://osrg.github.io/ryu-book/zh_tw/html/">Ryu Book</a></li>
+</ol>
+
+
+
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'takeshiblog';
+
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </div>
+        
+
+        
+<div class="ui inverted vertical footer segment">
+        <div class="ui container">
+            <div class="ui stackable inverted divided equal height stackable grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">About</h4>
+                    <div class="ui inverted link list">
+                        <a href="https://github.com/TakeshiTseng" class="item">Github</a>
+                        <a href="https://tw.linkedin.com/in/yitseng" class="item">LinkedIn</a>
+                        <a href="https://www.facebook.com/w2cnlab" class="item">W2CN Lab</a>
+                        <a href="mailto:a86487817@me.com" class="item">Contact Me</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Powered by</h4>
+                    <div class="ui inverted link list">
+                        <a href="http://fireapp.kkbox.com/" class="item">Fire.app</a>
+                        <a href="https://pages.github.com/" class="item">Github pages</a>
+                        <a href="http://semantic-ui.com" class="item">Semantic UI</a>
+                        <a href="https://cdnjs.com/" class="item">CDNjs</a>
+                        <a href="https://css.hanzi.co/" class="item">漢字標準格式</a>
+                        
+                        
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header">License</h4>
+                    <p>MIT</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Le javascript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+        <script src="/javascripts/semantic.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-41072125-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>
+            Han($('#article-content')[0]).render()
+        </script>
+        
+    </body>
+</html>

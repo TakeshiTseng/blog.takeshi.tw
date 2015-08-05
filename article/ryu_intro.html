@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
     <head>
         <meta charset="utf-8">
         <title>Takeshi's blog</title>
@@ -11,6 +11,11 @@
         <!-- Le styles -->
         <link href="/stylesheets/semantic.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="/stylesheets/icon.min.css" media="screen" rel="stylesheet" type="text/css" />
+        
+        
+        <link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.css">
+        <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
+        
 
         <style type="text/css">
             body {
@@ -53,7 +58,7 @@
 
 
         
-        <div class="ui text container piled segment" style="min-height: 450px;">
+        <div id="article-content" class="ui text container piled segment" style="min-height: 450px;">
             <h1 id="ryu-">Ryu 簡介</h1>
 <hr />
 
@@ -193,6 +198,11 @@ Datapath 以及其他 &quot;Context&quot; 這類東西，全部都會放在裡�
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
         <script src="/javascripts/semantic.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -202,6 +212,9 @@ Datapath 以及其他 &quot;Context&quot; 這類東西，全部都會放在裡�
             ga('create', 'UA-41072125-3', 'auto');
             ga('send', 'pageview');
 
+        </script>
+        <script>
+            Han($('#article-content')[0]).render()
         </script>
         
     </body>
