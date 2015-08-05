@@ -38,10 +38,18 @@ ofctl 主要有幾個東西是我們需要知道的：
 應用程式中只會有一個，他所儲存的內容是一個 dict 資料結構，大致的內容如下：
 
 waiters -> {dpid: waiter} : 每一個 switch 都會有對用的 waiter
-waiter -> {xid: (lock, msgs)} : 每一個事件回應的 xid 都是在送出事件是就決定好了
+
+waiter -> {xid: (lock, msgs)} : 
+
+每一個事件回應的 xid 都是在送出事件是就決定好了
+
 因此可以用 xid 推論回送出的事件，並且找出他的回應應該要存在哪邊（msgs），以及決定該
-事件的 lock，這一個 lock 有兩個用途，一個是用於等待時間，另一個是當這一個 lock
-如果有被設定（lock.set()）的話，則表示該事件有正常的結束回應（收到一個 flag 為 0 的 reply），否則
+事件的 lock
+
+這一個 lock 有兩個用途：
+
+* 用於等待時間(timeout)
+* 另一個是當這一個 lock 如果有被設定（lock.is_set()）的話，則表示該事件有正常的結束回應（收到一個 flag 為 0 的 reply），否則
 就將該 waiter 直接移除，隨後相同 xid 的 reply _將不會在被收到_
 
 get_flow_status 中會呼叫一個名為 send_stats_request 的 method，他的內容如下：
@@ -58,6 +66,7 @@ get_flow_status 中會呼叫一個名為 send_stats_request 的 method，他的�
         del waiters_per_dp[stats.xid]</code></pre>
         
 參數說明如下：
+
 1. dp: 表示要送往的 Switch
 2. stats: 一個 OpenFlow message，在這邊給予 xid
 3. waiters: 同剛剛的說明，他會把 lock, msgs, xid 放到這裡面
