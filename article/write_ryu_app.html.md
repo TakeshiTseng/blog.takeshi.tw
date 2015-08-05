@@ -148,6 +148,28 @@ def _packet_in_handler(self, ev):
     # do something....
 </code></pre>
 
+每一個 Event Handler 中都會有一個參數（ev），這一個參數會是在 decorator 中第一個參數類別所產生的
+事件實體，而 set_ev_cls 中第二個表示了要接收哪一個階段的事件，舉例來說如果想要處理在交握階段（Hand shake）
+的事件，後方的參數就會是 HANDSHAKE_DISPATCHER，當然，可以使用 list 作為第二個參數以表示多個
+階段的事件監聽。
 
+
+自定義 function
+----
+----
+
+這部份其實沒有什麼好說明，一般而言除了 event handler 以外，通常在處理複雜的網路規則時，不會把
+所有的東西都塞在同一個 method 中（至少我是這樣），這會讓程式變得複雜且難維護。
+
+
+參考
+----
+----
+
+1. [Ryu documant][1]
+2. [Ryu Book][2]
+
+[1]: http://ryu.readthedocs.org/en/latest/
+[2]: http://osrg.github.io/ryu-book/zh_tw/html/
 
 
