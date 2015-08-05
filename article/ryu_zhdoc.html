@@ -11,7 +11,7 @@
         <!-- Le styles -->
         <link href="/stylesheets/semantic.min.css" media="screen" rel="stylesheet" type="text/css" />
         <link href="/stylesheets/icon.min.css" media="screen" rel="stylesheet" type="text/css" />
-        
+
         
         <link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.css">
         <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
@@ -129,19 +129,23 @@ Language 底下就會出現不同的語言連結可以使用。</p>
 
 
 
-            <div id="disqus_thread"></div>
-            <script type="text/javascript">
-                /* * * CONFIGURATION VARIABLES * * */
-                var disqus_shortname = 'takeshiblog';
+            <!-- for social media sharing -->
+            <div id="sharing_area" class="ui loading segment">
+                <h4>分享這篇文章 : </h4>
+                <span class='st_facebook_large' displayText='Facebook'></span>
+                <span class='st_googleplus_large' displayText='Google +'></span>
+                <span class='st_twitter_large' displayText='Tweet'></span>
+                <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                <span class='st_sharethis_large' displayText='ShareThis'></span>
 
-                /* * * DON'T EDIT BELOW THIS LINE * * */
-                (function() {
-                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-            </script>
+            </div>
+
+            <!-- for disqus -->
+            <div id="disqus_thread"></div>
+
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
         </div>
         
 
@@ -187,6 +191,29 @@ Language 底下就會出現不同的語言連結可以使用。</p>
         <script src="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="http://ws.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">
+            stLight.options({publisher: "b8f81d63-2a0d-4819-b08f-9e81fe389372", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+            
+            setTimeout(function() {
+                $('#sharing_area').removeClass('loading');
+            }, 1500);
+            
+        </script>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'takeshiblog';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        
+
         
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
