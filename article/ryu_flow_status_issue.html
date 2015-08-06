@@ -99,7 +99,7 @@ pcap 以及 debug message 檔案，發現並不是這麼一回事。</p>
 <p>在呼叫 ofctl_v1_x.get_flow_stats 時，會將 waiter 帶入，要注意的是這一個 waiter 在這一支
 應用程式中只會有一個，他所儲存的內容是一個 dict 資料結構，大致的內容如下：</p>
 
-<p>waiters -&gt; {dpid: waiter} : 每一個 switch 都會有對用的 waiter</p>
+<p>waiters -&gt; {dpid: waiter} : 每一個 switch 都會有對應的 waiter</p>
 
 <p>waiter -&gt; {xid: (lock, msgs)} : </p>
 
@@ -184,6 +184,31 @@ Mark</code></pre>
 <hr />
 
 <p>後來我在 Ryu 的 Ml 裡面有提到這件事情，並且補上了 patch XD</p>
+
+<p>Patch 主要的內容：</p>
+
+<pre><code class="patch">diff --git a/ryu/lib/ofctl_v1_3.py b/ryu/lib/ofctl_v1_3.py  
+index 8490206..5b709f3 100644  
+--- a/ryu/lib/ofctl_v1_3.py  
++++ b/ryu/lib/ofctl_v1_3.py  
+@@ -404,10 +404,18 @@ def send_stats_request(dp, stats, waiters, msgs):  
+     dp.set_xid(stats)  
+     waiters_per_dp = waiters.setdefault(dp.id, {})  
+     lock = hub.Event()  
++    previous_msg_len = len(msgs)  
+     waiters_per_dp[stats.xid] = (lock, msgs)  
+     dp.send_msg(stats)  
+   
+     lock.wait(timeout=DEFAULT_TIMEOUT)  
++    current_msg_len = len(msgs)  
++  
++    while current_msg_len &gt; previous_msg_len:  
++        previous_msg_len = current_msg_len  
++        lock.wait(timeout=DEFAULT_TIMEOUT)  
++        current_msg_len = len(msgs)  
++  
+     if not lock.is_set():  
+         del waiters_per_dp[stats.xid]</code></pre>
 
 <p>目前的作法就是把原先的 Hard timeout 改成 idle timeout 邏輯，在每一次有新的 reply 時就在繼續等待
 ，若等待後沒有任何更新，則有兩種可能：</p>
