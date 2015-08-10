@@ -13,4 +13,16 @@ Ryu Book 簡略說法
 
 <img src="/images/ryu-book-ryu-arch.png" width="600">
 
+其實他的架構有點像是我之前所寫的 Ryu 架構，沒有看過的可以先到[這一篇][2]看看。
+
+原則上就是透過其他的 App 或是在 Ryu 中的函式庫去傳遞 Event 給其他的 App 中的 Queue 使用，這整套系統分為以下幾的
+部分：
+
+1. 初始化 observers
+2. 傳遞 Event 給所有（或是特定）的 Observer（App）
+3. 接收到該 Event 並且處理
+
+
+
 [1]: http://osrg.github.io/ryu/resources.html
+[2]: /article/ryu_intro.html
