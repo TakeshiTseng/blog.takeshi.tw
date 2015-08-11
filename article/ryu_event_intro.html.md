@@ -1,4 +1,4 @@
-Ryu Event 運作原理（初始化、傳遞、接收）
+Ryu Event 運作原理（Ryu Manager 初始化、傳遞、接收）
 ====
 ----
 
@@ -107,6 +107,8 @@ load_app 處理完之後，接者是
 Event 傳遞、接收與處理
 ----
 ----
+
+
 
 [1]: http://osrg.github.io/ryu/resources.html
 [2]: /article/ryu_intro.html
