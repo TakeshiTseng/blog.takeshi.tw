@@ -1,4 +1,4 @@
-Ryu Event 運作原理（Ryu Manager 初始化、傳遞、接收）
+Ryu App 初始化、Event 傳遞與接收
 ====
 ----
 
@@ -108,7 +108,46 @@ Event 傳遞、接收與處理
 ----
 ----
 
+剛剛有提到，每一個 Event Provider 跟 Event Observer 都在初始化階段被接上了，所以其實在傳遞 Event 所需要
+做的事情只有把該 Event Observer 找出來，並且將 Event object 丟給 handler method 處理。
 
+從原始碼角度來看如下：
+
+##送出
+
+1. send_event_to_observers
+    1. 找出所有對應於該 Event 的 Observer（String, 名稱）
+    2. 呼叫 send_event 方法，參數是每一個 Observer 名稱
+2. send_event
+    1. 如果 Event 是一個 EventRequestBase 的子類別（表示會回應 Provider 的 Event）的話，則
+    將 Provider 的名稱加入 Event 中。
+    2. 從 SERVICE_BRICKS 中找出 Observer 實體（RyuApp）並且呼叫他的 _send_event 方法
+3. _send_event
+    1. 將 Event 放入該 App 的 Event Queue 中
+
+##接收
+
+1. _event_loop
+    1. 檢查 event queue 是否為空或 is_active 為 True
+    2. 取得 Event 跟 state(MAIN, CONFID, HANDSHAKE, DEAD 這四種)
+    3. 透過 Event object 以及 state 取得所有的 handler method
+    4. 依序呼叫剛剛拿到的 handler method，並將 Event object 作為 method 的 parameter
+
+
+這邊補充一點，在一個 RyuApp 中，一個 Event 是 _可以有很多_ habdler 的，舉例來說，一個 App 中有兩個
+負責處理 Packet In Event 的 Handler，一個處理 Routing，另一個處理 LLDP。
+
+由於他在初始化時已經將很多東西都放置好了，所以 Event 的傳遞就相對的簡單許多，不過另外要注意的是，他是直接去呼叫
+handler，節錄程式如下：
+
+<pre><code class="python">handlers = self.get_handlers(ev, state)
+for handler in handlers:
+    handler(ev)</code></pre>
+
+所以要注意撰寫 Handler 時，千萬不能將整個 method block 住，如果不小心把它給 block 住的話，整個 RyuApp 就會停止
+（基本上其他的 RyuApp 並不會被影響）
+
+以上是本人在研究 Ryu Event 機制時的一些筆記，如果有問題歡迎到下方留言。
 
 [1]: http://osrg.github.io/ryu/resources.html
 [2]: /article/ryu_intro.html
