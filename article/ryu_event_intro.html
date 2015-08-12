@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+        <meta charset="utf-8">
+        <title>Takeshi's blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Tseng Yi">
+        <meta name="author" content="Takeshi">
+
+        <!-- Le styles -->
+        <link href="/stylesheets/semantic.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/stylesheets/icon.min.css" media="screen" rel="stylesheet" type="text/css" />
+
+        
+        <link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.css">
+        <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
+        
+
+        <style type="text/css">
+            body {
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+        </style>
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    </head>
+
+    <body>
+
+        <div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a href="/" class="header item">
+            Takeshi's Blog
+        </a>
+
+
+        <a class="item" href="/article">Article</a>
+        <a class="item" href="/about.html">About</a>
+    </div>
+</div>
+
+
+
+        <!-- fork me on github -->
+        <a href="https://github.com/TakeshiTseng/blog.takeshi.tw"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 1032;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+
+
+        
+        <div id="article-content" class="ui text container piled segment" style="min-height: 450px;">
+            <h1 id="ryu-app-event-">Ryu App 初始化、Event 傳遞與接收</h1>
+<hr />
+
+<p>這一篇文章要來提一下有關 Ryu 在 Event 處理上面的一些細節，其實在了解細節之後，會發現 Ryu 處理事件上面還算是蠻簡單的。</p>
+
+<p>這一篇另一個重點是 Ryu 整個初始化的階段，一開始沒有想要寫很多，結果發現越寫月多 XD，於是就納入重點中了。</p>
+
+<h2 id="ryu-book-">Ryu Book 簡略說法</h2>
+<hr />
+
+<p>下圖是 <a href="http://osrg.github.io/ryu/resources.html">Ryu book</a> 中所付的 Ryu 簡略架構，可以看出它實際運作的過程其實相當的簡單。</p>
+
+<p><img src="/images/ryu-book-ryu-arch.png" width="600" /></p>
+
+<p>其實他的架構有點像是我之前所寫的 Ryu 架構，沒有看過的可以先到<a href="/article/ryu_intro.html">這一篇</a>看看。</p>
+
+<p>原則上就是透過其他的 App 或是在 Ryu 中的函式庫去傳遞 Event 給其他的 App 中的 Queue 使用，這整套系統分為以下幾的
+部分：</p>
+
+<ol>
+  <li>初始化 Observers</li>
+  <li>傳遞 Event 給所有（或是特定）的 Observer（App）</li>
+  <li>接收到該 Event 並且處理</li>
+</ol>
+
+<h2 id="observers">初始化 Observers</h2>
+<hr />
+
+<p>接下來這幾個步驟我將會直接使用 Ryu 裡面所提供的程式原始碼來讓大家了解。</p>
+
+<p>首先我們必須知道 Ryu 他的起始點，一般來說我們使用的 ryu-manager 如下：</p>
+
+<pre><code>ryu/ryu/cmd/manager.py
+</code></pre>
+
+<p>接下來來看程式碼，我們主要看幾個關鍵的部份：</p>
+
+<pre><code class="python">app_mgr = AppManager.get_instance()
+app_mgr.load_apps(app_lists)
+contexts = app_mgr.create_contexts()
+services = []
+services.extend(app_mgr.instantiate_apps(**contexts))
+</code></pre>
+
+<p>在整個 Ryu 的執行階段當中，無論有多少隻 App 在執行，都只會有一個 AppManager 的 instance 存在，所以
+要取得 AppManager 的實體就必須呼叫 AppManager.get_instance() 才行。</p>
+
+<p>接著是將所有的 App 都載入到 App Manager 當中，在 load_apps 中做了以下幾件事情：</p>
+
+<ol>
+  <li>將 App 列表第一個 App pop 出來，並檢查一個它是否已經存在於其他 App 的 Contexts 中
+（詳見<a href="/article/write_ryu_app.html">撰寫一支 Ryu App</a>），若有，則忽略它。</li>
+  <li>尋找該 module（ex: ryu.app.simple_switch）中的「第一隻」App 的「Class」並把它塞到 applications_cls(dict) 中。</li>
+  <li>將剛剛找到的類別裡面的 CONTEXTS 抽出，並且塞到 App Manager 的 contexts_cls 中（用於第一項檢查）
+，並且檢查 CONTEXTS 是否有跟其他人使用的重複（例：只能有一個 App 使用 wsgi 模組）</li>
+  <li>檢查該 App 以及該 App 的 Contexts App 是否有用到一些會自動呼叫 register_service 的 event，舉例來說
+所有 ofp_event 下的 Event 都會註冊 ofp_handler，一但有任何人註冊該事件，則 Ryu 在啟動時會自動把 ofp_handler
+加入欲執行的清單當中，這也是為什麼我們不需要自己開 ofp_handler 的原因（當然，你要開也不是不行）</li>
+  <li>最後，將還未處理的 App （例如剛剛從 CONTEXTS 以及第 4 點所找到的東西）再次塞回 App 列表中，並回到步驟 1 直到
+完全沒有為止。</li>
+</ol>
+
+<p>load_app 處理完之後，接者是</p>
+<pre><code class="python">contexts = app_mgr.create_contexts()</code></pre>
+
+<p>這一個步驟比較簡單，主要是初始化剛剛所講的 CONTEXTS 中的東西，判斷一個 Context 是否為 RyuApp，如果是的話就
+使用 Ryu Manager 中的 _instantiate 這一個方法去初始化它，_instantiate 中做了幾件事情：</p>
+
+<ol>
+  <li>若該 App 有包含了 OFP_VERSIONS 屬性，則進行檢查該版本是否存在。</li>
+  <li>檢查該 App 是否已經存在 Manager 的 applications 屬性中。</li>
+  <li>若無，則使用該 App 的建構子進行初始化並且把一些相關參數帶入（args, kwargs）</li>
+  <li>執行 register_app
+    <ul>
+      <li>將 App 放入一個名為 SERVICE_BRICKS 的 dict 當中，這一個變數是用於存放所有 App(Servics)用，未來要尋找
+相關的 App(service)時就會經過它。</li>
+      <li>將該 App 中找到它有註冊哪一些 event，並且設定它的 Event Handler method。（RyuApp 中的 event_handlers 屬性）</li>
+    </ul>
+  </li>
+  <li>把初始化好的 App 塞到 applications 中（App 名稱 -&gt; App instance）</li>
+  <li>回傳這一個 App instance</li>
+</ol>
+
+<p>回到 create_contexts 這邊，初始化完所有 contexts 之後，會把這些 contexts 回傳（return）出去。</p>
+
+<p>最後一個是：</p>
+
+<pre><code class="python">services.extend(app_mgr.instantiate_apps(**contexts))</code></pre>
+
+<p>這一個的用途是將所有在 Manger 中的 applications_cls 取出並且呼叫 _instantiate 方法取初始化他們，
+其中他們的參數跟 context 那一個階段有一些些的不同，不同點如下：</p>
+
+<ol>
+  <li>這邊會帶入 App 的名稱，context 那邊只會帶入 None。</li>
+  <li>這邊會帶入 args 以及 kwargs 這兩個參數，其中 kwargs 就是我們的 contexts，所以我們可以在 App 建構子
+當中直接使用定義好的名稱去取得他們的實體。</li>
+</ol>
+
+<p>除了初始化 App 以外，它也做了以下幾件事情：</p>
+
+<ol>
+  <li>_update_bricks：將所有 Event 傳送者以及 Event Handler（Observer）連接上，也就是說
+所有會發送 Event 的 Ryu App 都會依據不同的 Event 有一個接收者的清單，舉例來說 SimpleSwitch 
+註冊了 EventOFPPacketIn，則 ofp_handler 在這一個 Event 下面的其中一個接收者就會有它的 Handle method。</li>
+  <li>report_brick：Debug 用，會將每一個關係印出。</li>
+  <li>由於給一個 RyuApp 都是一個 Thread，所以在這邊會呼叫他們的 start 方法，並且把產生好的 Thread 物件放置
+到一個 list 中並回傳出去。</li>
+</ol>
+
+<p>所有的 Ryu App Thread 產生完成之後，就會由 Eventlet 去對所有的 Thread 做出 Join 的動作，等待所有 App 都結束
+才會停止 Ryu Manager。</p>
+
+<p>初始化到這邊，接下來是 Event 傳遞以及接收並處理的部分，原則上比上面的簡單許多 XD</p>
+
+<h2 id="event-">Event 傳遞、接收與處理</h2>
+<hr />
+
+<p>剛剛有提到，每一個 Event Provider 跟 Event Observer 都在初始化階段被接上了，所以其實在傳遞 Event 所需要
+做的事情只有把該 Event Observer 找出來，並且將 Event object 丟給 handler method 處理。</p>
+
+<p>從原始碼角度來看如下：</p>
+
+<h2 id="section">送出</h2>
+
+<ol>
+  <li>send_event_to_observers
+    <ol>
+      <li>找出所有對應於該 Event 的 Observer（String, 名稱）</li>
+      <li>呼叫 send_event 方法，參數是每一個 Observer 名稱</li>
+    </ol>
+  </li>
+  <li>send_event
+    <ol>
+      <li>如果 Event 是一個 EventRequestBase 的子類別（表示會回應 Provider 的 Event）的話，則
+ 將 Provider 的名稱加入 Event 中。</li>
+      <li>從 SERVICE_BRICKS 中找出 Observer 實體（RyuApp）並且呼叫他的 _send_event 方法</li>
+    </ol>
+  </li>
+  <li>_send_event
+    <ol>
+      <li>將 Event 放入該 App 的 Event Queue 中</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="section-1">接收</h2>
+
+<ol>
+  <li>_event_loop
+    <ol>
+      <li>檢查 event queue 是否為空或 is_active 為 True</li>
+      <li>取得 Event 跟 state(MAIN, CONFID, HANDSHAKE, DEAD 這四種)</li>
+      <li>透過 Event object 以及 state 取得所有的 handler method</li>
+      <li>依序呼叫剛剛拿到的 handler method，並將 Event object 作為 method 的 parameter</li>
+    </ol>
+  </li>
+</ol>
+
+<p>這邊補充一點，在一個 RyuApp 中，一個 Event 是 <em>可以有很多</em> habdler 的，舉例來說，一個 App 中有兩個
+負責處理 Packet In Event 的 Handler，一個處理 Routing，另一個處理 LLDP。</p>
+
+<p>由於他在初始化時已經將很多東西都放置好了，所以 Event 的傳遞就相對的簡單許多，不過另外要注意的是，他是直接去呼叫
+handler，節錄程式如下：</p>
+
+<pre><code class="python">handlers = self.get_handlers(ev, state)
+for handler in handlers:
+    handler(ev)</code></pre>
+
+<p>所以要注意撰寫 Handler 時，千萬不能將整個 method block 住，如果不小心把它給 block 住的話，整個 RyuApp 就會停止
+（基本上其他的 RyuApp 並不會被影響）</p>
+
+<p>以上是本人在研究 Ryu Event 機制時的一些筆記，如果有問題歡迎到下方留言。</p>
+
+
+
+            <!-- for social media sharing -->
+            <div id="sharing_area" class="ui loading segment">
+                <h4>分享這篇文章 : </h4>
+                <span class='st_facebook_large' displayText='Facebook'></span>
+                <span class='st_googleplus_large' displayText='Google +'></span>
+                <span class='st_twitter_large' displayText='Tweet'></span>
+                <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                <span class='st_sharethis_large' displayText='ShareThis'></span>
+
+            </div>
+
+            <!-- for disqus -->
+            <div id="disqus_thread"></div>
+
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
+        </div>
+        
+
+        
+<div class="ui inverted vertical footer segment">
+        <div class="ui container">
+            <div class="ui stackable inverted divided equal height stackable grid">
+                <div class="three wide column">
+                    <h4 class="ui inverted header">About</h4>
+                    <div class="ui inverted link list">
+                        <a href="https://github.com/TakeshiTseng" class="item">Github</a>
+                        <a href="https://tw.linkedin.com/in/yitseng" class="item">LinkedIn</a>
+                        <a href="https://www.facebook.com/w2cnlab" class="item">W2CN Lab</a>
+                        <a href="mailto:a86487817@me.com" class="item">Contact Me</a>
+                    </div>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">Powered by</h4>
+                    <div class="ui inverted link list">
+                        <a href="http://fireapp.kkbox.com/" class="item">Fire.app</a>
+                        <a href="https://pages.github.com/" class="item">Github pages</a>
+                        <a href="http://semantic-ui.com" class="item">Semantic UI</a>
+                        <a href="https://cdnjs.com/" class="item">CDNjs</a>
+                        <a href="https://css.hanzi.co/" class="item">漢字標準格式</a>
+                        
+                        
+                    </div>
+                </div>
+                <div class="seven wide column">
+                    <h4 class="ui inverted header">License</h4>
+                    <p>MIT</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Le javascript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+        <script src="/javascripts/semantic.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="http://ws.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">
+            stLight.options({publisher: "b8f81d63-2a0d-4819-b08f-9e81fe389372", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+            
+            setTimeout(function() {
+                $('#sharing_area').removeClass('loading');
+            }, 1500);
+            
+        </script>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'takeshiblog';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        
+
+        
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                                    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-41072125-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script>
+            Han($('#article-content')[0]).render()
+        </script>
+        
+    </body>
+</html>
