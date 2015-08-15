@@ -1,0 +1,17 @@
+.fork-button {
+    @media screen and (max-width: 455px) {
+        display: none;
+    }
+}
+
+#hori-item-toc {
+    @media screen and (min-width: 455px) {
+        display: none;
+    }
+}
+
+#hori-item {
+    @media screen and (max-width: 455px) {
+        display: none;
+    }
+}
