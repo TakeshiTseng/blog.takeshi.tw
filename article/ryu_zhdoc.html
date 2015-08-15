@@ -10,7 +10,7 @@
 
         <!-- Le styles -->
         <link href="/stylesheets/semantic.min.css" media="screen" rel="stylesheet" type="text/css" />
-        <link href="/stylesheets/icon.min.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" />
 
         
         <link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.css">
@@ -41,12 +41,24 @@
 
     <body>
 
-        <div class="ui fixed inverted menu">
+        <div class="ui fixed inverted menu" id="horizontal-menu">
     <div class="ui container">
         <a href="/" class="header item">
             Takeshi's Blog
         </a>
+        <a id="hori-item-toc" class="item">≡</a>
+        <a id="hori-item" class="item" href="/article">Article</a>
+        <a id="hori-item" class="item" href="/about.html">About</a>
+        <a id="hori-item" class="item" href="/cv.pdf">CV</a>
+    </div>
+</div>
 
+<div class="ui sidebar inverted vertical menu" id="vertical-menu">
+    <div class="ui container">
+        <a href="/" class="header item">
+            Takeshi's Blog
+        </a>
+        
         <a class="item" href="/article">Article</a>
         <a class="item" href="/about.html">About</a>
         <a class="item" href="/cv.pdf">CV</a>
@@ -54,9 +66,8 @@
 </div>
 
 
-
         <!-- fork me on github -->
-        <a href="https://github.com/TakeshiTseng/blog.takeshi.tw"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 1032;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+        <a class="fork-button" href="https://github.com/TakeshiTseng/blog.takeshi.tw"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 1032;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
 
 
@@ -190,6 +201,7 @@ Language 底下就會出現不同的語言連結可以使用。</p>
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
         <script src="/javascripts/semantic.min.js"></script>
+        <script src="/javascripts/blog.js"></script>
         
         <script src="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
