@@ -56,52 +56,58 @@
         <a class="fork-button" href="https://github.com/TakeshiTseng/blog.takeshi.tw"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 1032;" src="/images/FMOG.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
         
-        <div class="ui container raised segment" style="margin-top:50px;min-height: 450px;">
-            <h1 id="section">文章列表</h1>
-<p>All articles will be here!</p>
-<hr>
+        <div id="article-content" class="ui text container piled segment" style="margin-top:50px;min-height: 450px;">
+            <h1 id="devops-">Devops 各種雜七雜八</h1>
+<hr />
 
-<div class="ui relaxed divided list">
-    <div class="item">
-        <p><em>2015.07.30</em> <a href="/article/new_blog.html">New Blog!</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.07.30</em> <a href="/article/about_this_blog.html">About this blog</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.07.31</em> <a href="/article/epoch.html">Epoch - SDN simulator for Mac OSX</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.07.31</em> <a href="/article/ryu_zhdoc.html">Ryu 官方線上文件中文翻譯</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.08.01</em> <a href="/article/ryu_intro.html">Ryu 簡介</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.08.03</em> <a href="/article/write_ryu_app.html">撰寫一支 Ryu App</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.08.05</em> <a href="/article/ryu_flow_status_issue.html">Ryu 在 Query 含有大量 flow 的 switch 所出現的問題以及解法</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.08.12</em> <a href="/article/ryu_event_intro.html">Ryu App 初始化、Event 傳遞與接收</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.08.13</em> <a href="/article/ryu_handler_block.html">Ryu Event handler Block 問題以及解決方式</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.08.16</em> <a href="/article/coscup_2015_workshop.html">COSCUP 2015 Open Network Workshop 簡報以及範例程式</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.08.18</em> <a href="/article/sdn_work.html">一些 Ryu 以及 SDN 相關的程式</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.09.11</em> <a href="/article/ryu_dynamic_loader.html">Ryu Dynamic Application Loader 實作</a></p>
-    </div>
-    <div class="item">
-        <p><em>2015.09.11</em> <a href="/article/devops.html">Devops 各種雜七雜八</a></p>
-    </div>
-</div>
+<h2 id="container-">Container 類</h2>
+
+<p>Docker:</p>
+
+<p><a href="https://www.docker.com/">https://www.docker.com/</a></p>
+
+<p>Shipyard (for docker management):</p>
+
+<p><a href="https://shipyard-project.com/">https://shipyard-project.com/</a></p>
+
+<p>Kitematic (docker management):</p>
+
+<p><a href="https://kitematic.com/">https://kitematic.com/</a></p>
+
+<p>OpenVZ:</p>
+
+<p><a href="https://www.openvz.org/Main_Page">https://www.openvz.org/Main_Page</a></p>
+
+<h2 id="image-pack">Image pack</h2>
+
+<p>Packer:</p>
+
+<p><a href="https://www.packer.io/">https://www.packer.io/</a></p>
+
+<h2 id="vm-">VM 管理/部屬</h2>
+
+<p>Vagrant:</p>
+
+<p><a href="https://www.vagrantup.com/">https://www.vagrantup.com/</a></p>
+
+
+            <!-- for social media sharing -->
+            <div id="sharing_area" class="ui loading segment">
+                <h4>分享這篇文章 : </h4>
+                <span class='st_facebook_large' displayText='Facebook'></span>
+                <span class='st_googleplus_large' displayText='Google +'></span>
+                <span class='st_twitter_large' displayText='Tweet'></span>
+                <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                <span class='st_sharethis_large' displayText='ShareThis'></span>
+
+            </div>
+
+            <!-- for disqus -->
+            <div id="disqus_thread"></div>
+
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+
         </div>
         
 
@@ -145,6 +151,33 @@
         <script src="/javascripts/semantic.min.js"></script>
         <script src="/javascripts/blog.js"></script>
         
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="http://ws.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">
+            stLight.options({publisher: "b8f81d63-2a0d-4819-b08f-9e81fe389372", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+
+            setTimeout(function() {
+                $('#sharing_area').removeClass('loading');
+            }, 1500);
+
+        </script>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'takeshiblog';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+
+
+        
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -163,6 +196,8 @@
 </html>
 
 <link href="/stylesheets/style.css" media="screen" rel="stylesheet" type="text/css" /><link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.8/semantic.min.css">
+<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/Han/3.2.5/han.min.css">
+<link rel="stylesheet" media="all" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/default.min.css">
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
