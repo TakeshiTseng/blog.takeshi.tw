@@ -56,13 +56,96 @@
         <a class="fork-button" href="https://github.com/TakeshiTseng/blog.takeshi.tw"><img style="position: fixed; top: 0; right: 0; border: 0; z-index: 1032;" src="/images/FMOG.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
         
-        <div id="article-content" class="ui text container piled segment" style="min-height: 450px;">
-            <h1 id="ryu-dynamic-loader-">Ryu Dynamic Loader 實作</h1>
+        <div id="article-content" class="ui text container piled segment" style="margin-top:50px;min-height: 450px;">
+            <h1 id="ryu-application-dynamic-loader-----">Ryu Application Dynamic Loader 實作 – 簡介</h1>
 <hr />
 
-<p>先放一下投影片，未來預計會把更多細節補上</p>
-
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/jAyBwNCnH7q6Nz" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe>
+
+<p>Ryu Dynamic Loader 這一個 Project 是我在參與交大 OpenSource 計畫時開始撰寫的，
+在上一個學期中只有把基礎架構跟基本功能訂定出來，也因為要寫這一個 Project，仔細的專研了
+一下 Ryu 核心程式，發現其實沒有這麼困難，要實作一個能夠動態載入的功能只是時間問題。</p>
+
+<p>其實在很久以前就有人在 <a href="http://sourceforge.net/p/ryu/mailman/search/?q=dynamic">Mailing List</a> 中詢問</p>
+
+<h2 id="app">安裝 App</h2>
+<hr />
+
+<p>依據 ryu-manager cli 中的內容，我們可以分析出在安裝時有幾個步驟</p>
+
+<p><img src="/images/ryu_load_apps.png" /></p>
+
+<p>一開始認為只需要照這些步驟做就可以把 App 安裝好了，但是事情沒有這麼單純。</p>
+
+<p>至於為什麼「一次載入全部」跟「後來在載入一個」會不一樣？，主要是在於載入
+每一個 _CONTEXTS 那部分，Ryu 會先把所有的 class 掃過，並且把所有的 Context
+放到一個列表當中，這一個列表混和了所有跟 RyuApp 相關的類別，他們稱為「Service」</p>
+
+<p>而安裝一個 App 會更新到的資料如下：</p>
+
+<ol>
+  <li>SERVICE_BRICKS</li>
+  <li>applications</li>
+  <li>contexts</li>
+</ol>
+
+<p>因此，我們在實作 install 的時候只需要更新這些東西並啟動他就可以了</p>
+
+<p>以 Network Operating System 的觀點來看就好像是在某個系統上安裝應用程式，
+然後再啟動他這樣。</p>
+
+<p>其他有關安裝、初始化以及啟動的部份，在<a href="http://blog.takeshi.tw/article/ryu_event_intro.html">這一篇</a>已經有詳細說明了，在這邊不再闡述</p>
+
+<h2 id="app-1">解除安裝 App</h2>
+<hr />
+
+<p>這部份比較複雜，主要是因為官方並沒有 <em>正式提供</em> 解除安裝的功能，所以需要仔細去研究</p>
+
+<p>原本我以為只需要呼叫 manager 中的 uninstantiate 就好了，但事實不是這樣 XD</p>
+
+<p>以下是解除安裝的一些步驟：</p>
+
+<ol>
+  <li>從 app manager 中得 applications（dict）中找出要移除的 app instance</li>
+  <li>呼叫 app manager 的 uninstantiate 方法，參數為該 app 的名稱（app.name）</li>
+  <li>停止 app 的 thread（app.stop()）</li>
+  <li>取得該 app 中的 contexts 並且關閉及回收 <em>沒有其他 App 在使用的 context</em></li>
+</ol>
+
+<p>這邊補充一下第四點，這邊所指的回收其實是要從三個地方去移除他，就是我上方所寫的：</p>
+
+<ul>
+  <li>SERVICE_BRICKS</li>
+  <li>applications</li>
+  <li>contexts</li>
+</ul>
+
+<p>必須要把它從這些地方移除掉，且必須要交叉比對卻人沒有其他的 App 沒有使用才行</p>
+
+<p>上述就是整個 Dynamic application loader 的核心功能</p>
+
+<p>目前這一個計畫已經改名為 Dragon Knight 了，為一個獨立的計畫，他不只包含了
+安裝以及解除安裝的功能，也包含了：</p>
+
+<ol>
+  <li>Show bricks：顯示目前 event 關係</li>
+  <li>Ascii topology：在文字介面上顯示拓樸</li>
+</ol>
+
+<p>這幾項功能，不過目前還是有一些 Bug 存在，這些 Bug 比較不好處理</p>
+
+<p>舉例來說，假設 Ryu manager 已經開啟好且執行一端時間了，較表示目前的「狀態」
+已經從 Handshake、Config 變成了 Main</p>
+
+<p>如果今天要安裝一個會去監聽（Observe）在 Config 階段的 Ryu app則會導致他沒有
+辦法抓到，最簡單的例子就是 simple switch for openflow 1.3 這一個版本，
+他一開始會先接收 EventSwitchFeature 並把預設的 flow 安裝進去，但是如果是後來
+才安裝他進去的話，就會導致他不會安裝預設的 flow entry，table miss 時就不會
+有 packet in message。</p>
+
+<p>Dragon Knight 的原始碼可以到這邊查看：</p>
+
+<p><a href="https://github.com/Ryu-Dragon-Knight/Dragon-Knight">https://github.com/Ryu-Dragon-Knight/Dragon-Knight</a></p>
 
 
 
