@@ -2,3 +2,4 @@
 .coffeescript-cache
 fire_app_log.txt
 .sass-cache
+build_*
